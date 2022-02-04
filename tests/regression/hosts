@@ -1,0 +1,11 @@
+#cdc1 ansible_host=100.104.26.67 ansible_user=admin ansible_password=force10
+cdc1 ansible_host=100.104.26.124 ansible_user=admin ansible_password=Dell@force10
+#cdc1 ansible_host=100.94.73.205 ansible_user=admin ansible_password=admin123
+
+[datacenter]
+cdc1
+
+[datacenter:vars]
+ansible_network_os=dellemc.sfss.sfss
+ansible_httpapi_use_ssl=true
+ansible_httpapi_validate_certs=false

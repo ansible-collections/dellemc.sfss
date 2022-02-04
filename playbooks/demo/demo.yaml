@@ -1,0 +1,21 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: Host and subsystem create
+      sfss_endpoints:
+        config: "{{ sfss_endpoints + sfss_endpoints_for_alias}}"
+    - name: Stfs zones alias create
+      sfss_zone_alias:
+        config: "{{ sfss_zone_alias }}"
+    - name: Stfs zones create
+      sfss_zones:
+        config: "{{sfss_zones}}"
+    - name: Activate Zone group
+      sfss_zone_groups:
+        config: "{{ sfss_zone_groups }}"
+  

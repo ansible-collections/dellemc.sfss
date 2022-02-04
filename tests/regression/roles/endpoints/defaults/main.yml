@@ -1,0 +1,177 @@
+---
+ansible_connection: httpapi
+module_name: endpoints
+
+tests:
+  "{{ tests_hosts + tests_subsystems + tests_ddcs + tests_delete_all }}"
+  #"{{ tests_subsystems }}"
+  #"{{ tests_ddcs }}"
+  #"{{ tests_hosts }}"
+  #"{{tests_delete_all}}"
+
+tests_hosts:
+  - name: test_case_01
+    description: creates Endpoint Hosts properties
+    state: merged
+    input:
+        - type: host
+          instance_id: 1
+          transport_address: 2::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+        - type: host
+          instance_id: 1
+          transport_address: 3::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+        - type: host
+          instance_id: 1
+          nqn_id: ansible.tcp.ipv6.2014-08.org.nvmexpress:uuid:host
+          transport_address: 1::1
+          transport_address_family: ipv6          
+        - type: host
+          instance_id: 1
+          nqn_id: ansible.tcp.2014-08.org.nvmexpress:uuid:host
+          transport_address: 22.1.1.1
+          transport_address_family: ipv4
+        - type: host
+          instance_id: 1
+          transport_address: 23.1.1.1
+          transport_address_family: ipv4
+        - type: host
+          instance_id: 1
+          transport_address: 24.1.1.1
+          transport_address_family: ipv4   
+
+  - name: test_case_02
+    description: Deleted Endpoint Hosts properties
+    state: deleted
+    input:
+        - type: host
+          instance_id: 1
+          transport_address: 2::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+        - type: host
+          instance_id: 1
+          transport_address: 3::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+        - type: host
+          instance_id: 1
+          nqn_id: ansible.tcp.ipv6.2014-08.org.nvmexpress:uuid:host
+          transport_address: 1::1
+          transport_address_family: ipv6          
+        - type: host
+          instance_id: 1
+          nqn_id: ansible.tcp.2014-08.org.nvmexpress:uuid:host
+          transport_address: 22.1.1.1
+          transport_address_family: ipv4
+        - type: host
+          instance_id: 1
+          transport_address: 23.1.1.1
+          transport_address_family: ipv4
+        - type: host
+          instance_id: 1
+          transport_address: 24.1.1.1
+          transport_address_family: ipv4
+
+tests_subsystems:
+  - name: test_case_03
+    description: created Endpoint Subsystem properties
+    state: merged
+    input: 
+        - type: subsystem
+          instance_id: 1
+          nqn_id: ansible.2014-08.org.nvmexpress:uuid:subsystem
+          transport_address: 4::1
+          transport_address_family: ipv6
+          transport_type: tcp
+
+  - name: test_case_04
+    description: deleted Endpoint Subsystem
+    state: deleted
+    input:
+        - type: subsystem
+          instance_id: 1
+          nqn_id: ansible.2014-08.org.nvmexpress:uuid:subsystem
+          transport_address: 4::1
+          transport_address_family: ipv6
+          transport_type: tcp
+
+tests_ddcs:          
+  - name: test_case_05
+    description: created Endpoint DDC ipv4
+    state: merged
+    input:
+        - type: ddc
+          instance_id: 1
+          transport_address: 5.5.5.5
+          transport_address_family: ipv4
+          ddc_activate: true
+  - name: test_case_06
+    description: updated Endpoint DDC ipv4
+    state: merged
+    input: 
+        - type: ddc
+          instance_id: 1
+          transport_address: 5.5.5.5
+          transport_address_family: ipv4
+          ddc_activate: false
+  - name: test_case_07
+    description: deleted Endpoint DDC ipv4
+    state: deleted
+    input: 
+        - type: ddc
+          instance_id: 1
+          transport_address: 5.5.5.5
+          transport_address_family: ipv4
+  
+  - name: test_case_08
+    description: created Endpoint DDC ipv6
+    state: merged
+    input: 
+        - type: ddc
+          instance_id: 1
+          transport_address: 5::1
+          transport_address_family: ipv6
+  - name: test_case_9
+    description: deleted Endpoint DDC ipv6
+    state: deleted
+    input:
+        - type: ddc
+          instance_id: 1
+          transport_address: 5::1
+          transport_address_family: ipv6
+  - name: test_case_10
+    description: creates Endpoint Hosts properties
+    state: merged
+    input:
+        - type: host
+          instance_id: 1
+          transport_address: 2::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+        - type: host
+          instance_id: 1
+          transport_address: 3::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+        - type: host
+          instance_id: 1
+          nqn_id: ansible.tcp.ipv6.2014-08.org.nvmexpress:uuid:host
+          transport_address: 1::1
+          transport_address_family: ipv6          
+        - type: host
+          instance_id: 1
+          nqn_id: ansible.tcp.2014-08.org.nvmexpress:uuid:host
+          transport_address: 22.1.1.1
+          transport_address_family: ipv4
+        - type: host
+          instance_id: 1
+          transport_address: 23.1.1.1
+          transport_address_family: ipv4
+        - type: host
+          instance_id: 1
+          transport_address: 24.1.1.1
+          transport_address_family: ipv4  
+
+tests_delete_all:
+  - name: test_case_11
+    description: deleted all Endpoints
+    state: deleted
+    input: []

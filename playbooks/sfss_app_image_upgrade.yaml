@@ -1,0 +1,28 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+  - name: SFSS Image upgrade process started ...
+    sfss_app_image_upgrade:
+      config:
+        image_version: 1.0.0.3
+    register: image_upgrade_result
+  - debug: var=image_upgrade_result  
+  - name: Wait image to get upgraded
+    pause:
+      seconds: 15
+    when: image_upgrade_result.changed == true
+  - name: Get the APP Image data
+    sfss_facts:
+      gather_network_resources: 
+        - app_image_upgrade
+    register: result
+    until: result.failed == false
+    retries: 20
+    delay: 4
+    ignore_errors: yes
+  - debug: var=result

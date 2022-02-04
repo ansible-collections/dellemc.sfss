@@ -1,0 +1,56 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: "Gather facts"
+      sfss_facts:
+        gather_subset: min
+        gather_network_resources: 
+          - zone_alias
+      register: result
+    - name: SFSS zones alias create
+      sfss_zone_alias:
+        config:
+        - name: Ansible123
+          instance_id: 1
+          members:
+            data: 
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+                type: 'nqn'
+                role: 'subsystem'
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.2.1.1:3002"
+                type: 'nqn'
+                role: 'subsystem'
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:2.1.1.1:3002"
+                type: 'fqn'
+                role: 'subsystem'
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.3.1.1:3002"
+                type: 'fqn'
+                role: 'host'
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+                type: 'fqn'
+                role: 'host'
+              - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+                type: 'fqn'
+                role: 'host'                
+    - name: SFSS zones alias delete
+      sfss_zone_alias:
+        config:
+        - name: Ansible123
+          instance_id: 1
+          members:
+            data: 
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+                type: 'nqn'
+                role: 'subsystem'
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.2.1.1:3002"
+                type: 'nqn'
+                role: 'subsystem'
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:2.1.1.1:3002"
+                type: 'fqn'
+                role: 'subsystem'
+        state: deleted

@@ -1,0 +1,5 @@
+- name: Deletes old zone alias
+  sfss_zone_alias:
+    config: []
+    state: deleted
+  ignore_errors: yes

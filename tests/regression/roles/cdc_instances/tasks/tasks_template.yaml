@@ -1,0 +1,24 @@
+- name: "{{ item.name}} , {{ item.description}}"
+  sfss_cdc_instances:
+    config: "{{ item.input }}"
+    state: "{{ item.state }}"
+  register: action_task_output
+  ignore_errors: yes
+
+- import_role:
+    name: common
+    tasks_from: action.facts.report.yaml
+
+- pause:
+    seconds: 20
+  
+- name: "{{ item.name}} , {{ item.description}} Idempotent"
+  sfss_cdc_instances:
+    config: "{{ item.input }}"
+    state: "{{ item.state }}"
+  register: idempotent_task_output
+  ignore_errors: yes
+  
+- import_role:
+    name: common
+    tasks_from: idempotent.facts.report.yaml

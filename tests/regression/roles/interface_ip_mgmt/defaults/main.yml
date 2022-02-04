@@ -1,0 +1,114 @@
+---
+ansible_connection: httpapi
+module_name: interface_ip_mgmt
+
+tests: "{{ tests_vlans }}"
+
+tests_vlans:
+  - name: test_case_01
+    description: creates Interface IP management
+    state: merged
+    input:
+    - ipv4_address: 64.1.1.2
+      ipv4_config_type: manual
+      ipv4_gateway: 64.1.1.254
+      ipv4_netmask: 16
+      ipv6_address: fe64::1699:6f09:43dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe64::1699:6f09:43dd:ffff
+      ipv6_netmask: 64
+      parent_interface: ens192
+      vlan_id: 64   
+
+  - name: test_case_02
+    description: update Interface IP management
+    state: merged
+    input:
+    - ipv4_address: 64.1.1.1
+      ipv4_config_type: manual
+      ipv4_gateway: 64.1.2.254
+      ipv4_netmask: 16
+      ipv6_address: fe64::1699:6f09:43dd:56c3
+      ipv6_config_type: manual
+      ipv6_gateway: fe64::1699:6f09:44dd:ffff
+      ipv6_netmask: 64
+      parent_interface: ens192
+      vlan_id: 64
+
+  - name: test_case_03
+    description: Update Interface IP management
+    state: merged
+    input:
+    - ipv4_config_type: manual
+      ipv4_address: 64.1.1.1      
+      ipv4_gateway: 64.1.2.254
+      ipv4_netmask: 16
+      ipv6_config_type: automatic
+      parent_interface: ens192
+      vlan_id: 64
+
+
+  - name: test_case_04
+    description: Update Interface IP management
+    state: merged
+    input:
+    - ipv4_config_type: automatic
+      ipv6_config_type: automatic
+      parent_interface: ens192
+      vlan_id: 64
+
+
+
+tests_physical_inf:
+  - name: test_case_05
+    description: creates Interface IP management
+    state: merged
+    input:
+    - ipv4_address: 33.1.1.2
+      ipv4_config_type: manual
+      ipv4_gateway: 33.1.1.254
+      ipv4_netmask: 16
+      ipv6_address: fe33::1699:6f09:43dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe33::1699:6f09:43dd:ffff
+      ipv6_netmask: 64
+      parent_interface: ens33     
+
+  - name: test_case_06
+    description: update Interface IP management
+    state: merged
+    input:
+    - ipv4_address: 33.1.1.1
+      ipv4_config_type: manual
+      ipv4_gateway: 33.1.2.254
+      ipv4_netmask: 16
+      ipv6_address: fe33::1699:6f09:44dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe33::1699:6f09:44dd:ffff
+      ipv6_netmask: 64
+      parent_interface: ens33    
+
+  - name: test_case_07
+    description: Update Interface IP management
+    state: merged
+    input:
+    - ipv4_address: 33.1.1.1
+      ipv4_config_type: manual
+      ipv4_gateway: 33.1.2.254
+      ipv4_netmask: 16
+      ipv6_config_type: automatic
+      parent_interface: ens33
+
+  - name: test_case_08
+    description: Update Interface IP management
+    state: merged
+    input:
+    - ipv4_config_type: automatic
+      ipv6_config_type: automatic
+      parent_interface: ens33
+
+
+  # - name: test_case_05
+  #   description: delete all instances
+  #   state: deleted
+  #   input: []

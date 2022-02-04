@@ -1,0 +1,41 @@
+---
+ansible_connection: httpapi
+module_name: zone_groups
+
+
+tests:
+  - name: test_case_01
+    description: creates zone group with activate states false
+    state: merged
+    input:
+    - name: ansible.zone_grp1
+      instance_id: 1
+      activate_status: false
+  
+  - name: test_case_02
+    description: creates zone group with activate states true
+    state: merged
+    input:
+    - name: ansible.zone_grp2
+      instance_id: 1
+      activate_status: true
+    
+  - name: test_case_03
+    description: updates zone group with activate states
+    state: merged
+    input:
+    - name: ansible.zone_grp2
+      instance_id: 1
+      activate_status: false
+
+  - name: test_case_04
+    description: deletes zone group
+    state: deleted
+    input:
+    - name: ansible.zone_grp1
+      instance_id: 1
+  
+  - name: test_case_05
+    description: deletes all zone groups
+    state: deleted
+    input: []

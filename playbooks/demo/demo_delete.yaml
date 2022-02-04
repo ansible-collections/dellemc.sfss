@@ -1,0 +1,32 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    # - name: Stfs zones create
+    #   sfss_interface_ip_mgmt:
+    #     config: []
+    #     state: deleted
+    - name: Stfs zones alias create
+      sfss_zone_alias:
+        config: []
+        state: deleted         
+    - name: Stfs zones create
+      sfss_zones:
+        config: []
+        state: deleted    
+    - name: security auth create
+      sfss_security_authentication:
+        config: []
+        state: deleted  
+    # - name: Host and subsystem create
+    #   sfss_endpoints:
+    #     config: []
+    #     state: deleted
+    - name: Create CDC instances
+      sfss_cdc_instances:
+        config: []
+        state: deleted            

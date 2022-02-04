@@ -1,0 +1,5 @@
+- name: Deletes old app images
+  sfss_app_images:
+    config: []
+    state: deleted
+  ignore_errors: yes

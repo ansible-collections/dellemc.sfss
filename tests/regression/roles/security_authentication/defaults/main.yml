@@ -1,0 +1,52 @@
+---
+ansible_connection: httpapi
+module_name: security_authentications
+
+tests:
+  - name: test_case_01
+    description: creates Security Authentication
+    state: merged
+    input:
+    - authentication_sequence: ["tacacs+", "local"]
+      authentication_servers:
+      - authentication_type: "radius"
+        server_ip: "204.1.1.1"
+        password: "xxxx"
+      - authentication_type: "radius"
+        server_ip: "210.1.1.1"
+        password: "xxxx"
+      - authentication_type: "tacacs"
+        server_ip: "201.1.1.1"
+        password: "xxxx"
+      - authentication_type: "radius"
+        server_ip: "200.1.1.1"
+        password: "xxxx"  
+
+  - name: test_case_02
+    description: update Security Authentication
+    state: merged
+    input:
+    - authentication_sequence: ["tacacs+", "local"]
+      authentication_servers:
+      - authentication_type: "radius"
+        server_ip: "205.1.1.1"
+        password: "xxxx"
+      - authentication_type: "radius"
+        server_ip: "211.1.1.1"
+        password: "xxxx"
+      - authentication_type: "tacacs"
+        server_ip: "202.1.1.1"
+        password: "xxxx"
+      - authentication_type: "radius"
+        server_ip: "203.1.1.1"
+        password: "xxxx"  
+
+  - name: test_case_03
+    description: delete specifccd instace
+    state: deleted
+    input:
+    - authentication_sequence: ["tacacs+", "local"]
+      authentication_servers:
+      - authentication_type: "radius"
+        server_ip: "205.1.1.1"
+        password: "xxxx"

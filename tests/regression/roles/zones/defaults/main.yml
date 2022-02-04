@@ -1,0 +1,135 @@
+---
+ansible_connection: httpapi
+module_name: zones
+
+zone_group1: reg.zone_group1
+zone_group2: reg.zone_group2
+
+preparation_tasks:
+  zone_groups:
+    - name: "{{ zone_group1 }}"
+      instance_id: 1
+      activate_status: true
+    - name: "{{ zone_group2 }}"
+      instance_id: 1
+      activate_status: true
+
+tests:
+  - name: test_case_01
+    description: creates Zones
+    state: merged
+    input:
+    - name: reg.zone1
+      instance_id: 1
+      group_name: "{{ zone_group1 }}"
+      members:
+        data:
+          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+            id_type: fqn
+            role: host
+  - name: test_case_02
+    description: creates Zones
+    state: merged
+    input:
+    - name: reg.zone2
+      instance_id: 1
+      group_name: "{{ zone_group2 }}"
+    - name: reg.zone3
+      instance_id: 1
+      group_name: "{{ zone_group2 }}"
+
+tests1:
+  - name: test_case_01
+    description: creates Zones
+    state: merged
+    input:
+    - name: reg.zone1
+      instance_id: 1
+      group_name: "{{ zone_group1 }}"
+      members:
+        data:
+          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+            id_type: fqn
+            role: host
+  - name: test_case_02
+    description: creates Zones
+    state: merged
+    input:
+    - name: reg.zone2
+      instance_id: 1
+      group_name: "{{ zone_group2 }}"
+    - name: reg.zone3
+      instance_id: 1
+      group_name: "{{ zone_group2 }}"
+
+  - name: test_case_03
+    description: updates Zones members
+    state: merged
+    input:
+    - name: reg.zone1
+      instance_id: 1
+      group_name: "{{ zone_group1 }}"
+      members:
+        data:
+          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+            id_type: fqn
+            role: host
+          - id: ansible2.nqn.2014-08.org.nvmexpress:uuid:host
+            id_type: fqn
+            role: subsystem
+          - id: ansible3.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+            id_type: fqn
+            role: host                  
+
+  - name: test_case_04
+    description: updates Zones members
+    state: merged              
+    input:    
+    - name: reg.zone2
+      instance_id: 1
+      group_name: "{{ zone_group2 }}"
+      members:
+        data:      
+          - id: ansible4.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+            id_type: fqn
+            role: host
+          - id: ansible5.nqn.2014-08.org.nvmexpress:uuid:host
+            id_type: fqn
+            role: subsystem
+
+  - name: test_case_05
+    description: creates Zones
+    state: deleted
+    input:
+    - name: reg.zone1
+      instance_id: 1
+      group_name: "{{ zone_group1 }}"
+      members:
+        data:
+          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+            id_type: fqn
+            role: host
+          - id: ansible2.nqn.2014-08.org.nvmexpress:uuid:host
+            id_type: fqn
+            role: subsystem
+
+  - name: test_case_06
+    description: Delete Zones with members
+    state: deleted
+    input:
+    - name: reg.zone2
+      instance_id: 1
+      group_name: "{{ zone_group2 }}"
+      
+  - name: test_case_07
+    description: Delete Zones without members
+    state: deleted
+    input:
+    - name: reg.zone3
+      instance_id: 1
+      group_name: "{{ zone_group2 }}"
+      
+  - name: test_case_08
+    description: creates Zones
+    state: deleted
+    input: []

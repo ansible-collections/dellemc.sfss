@@ -1,0 +1,26 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: "Gather facts"
+      sfss_facts:
+        gather_subset: min
+        gather_network_resources: 
+          - global_policies
+      register: result
+    - name: Create Global Policies
+      dellemc.sfss.sfss_global_policies:
+        config: 
+        - zoning_policy: false
+          NameServerEntityPurgeTOV: 48Hr
+          instance_id: 1
+        - zoning_policy: true
+          NameServerEntityPurgeTOV: 48Hr
+          instance_id: 2
+        - instance_id: 1
+          zoning_policy: false
+          NameServerEntityPurgeTOV: 4Hr
