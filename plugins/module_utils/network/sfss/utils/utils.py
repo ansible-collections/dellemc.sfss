@@ -33,7 +33,7 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constant
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
 
-DEFAULT_TEST_KEY = {'config': {'name'}}
+DEFAULT_TEST_KEY = {'config': {'name': ''}}
 GET = 'get'
 
 
