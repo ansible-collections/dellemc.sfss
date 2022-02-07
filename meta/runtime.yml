@@ -1,0 +1,25 @@
+requires_ansible: '>=2.9.10'
+plugin_routing:
+  action:
+    sfss_app_immages:
+      redirect: dellemc.sfss.sfss
+    sfss_backup_restore:
+      redirect: dellemc.sfss.sfss
+    sfss_cdc_instances:
+      redirect: dellemc.sfss.sfss
+    sfss_endpoints:
+      redirect: dellemc.sfss.sfss
+    sfss_facts:
+      redirect: dellemc.sfss.sfss
+    sfss_global_policies:
+      redirect: dellemc.sfss.sfss
+    sfss_interface_ip_mgmt:
+      redirect: dellemc.sfss.sfss
+    sfss_security_authentication:
+      redirect: dellemc.sfss.sfss
+    sfss_zone_alias:
+      redirect: dellemc.sfss.sfss
+    sfss_zone_groups:
+      redirect: dellemc.sfss.sfss
+    sfss_zones:
+      redirect: dellemc.sfss.sfss
