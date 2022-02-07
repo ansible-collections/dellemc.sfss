@@ -1,0 +1,15 @@
+namespace: dellemc
+name: sfss
+version: 0.0.1
+readme: README.md
+authors:
+- Mohamed Javeed <mohamed_javeed_faroo@Dell.com>
+- Namrata Chatterjee <Namrata_Chatterjee@Dell.com>
+ 
+description: Ansible Network Collection for SFSS by Dell Technologies
+license_file: LICENSE
+tags: [dellemc, dell, networking, sfss]
+dependencies: 
+  "ansible.netcommon": ">=2.0.0"
+repository: https://github.com/ansible-collections/dellemc.sfss
+issues: https://github.com/ansible-collections/dellemc.sfss/issues
