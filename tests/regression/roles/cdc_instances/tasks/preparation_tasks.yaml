@@ -1,4 +1,3 @@
-
 # - name: Deletes old CDC instances
 #   sfss_cdc_instances:
 #     config: []

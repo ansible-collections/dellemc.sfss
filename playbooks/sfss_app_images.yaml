@@ -53,9 +53,6 @@
           transport_type: scp
           version: 1.4.0
         state: deleted   
-    - name: Pause for 5 minutes to build app cache
-      pause:
-        seconds: 30
     - name: SFSS app images delete all
       sfss_app_images:
         config: []
