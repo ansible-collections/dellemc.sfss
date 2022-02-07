@@ -32,9 +32,6 @@ Name | Description
 [**sfss_app_images**]|Manage APP image downloads
 
 
-Sample use case playbooks
--------------------------
-TBD
 
 Version compatibility
 ----------------------
