@@ -1,0 +1,28 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: "Gather facts"
+      sfss_facts:
+        gather_subset: min
+        gather_network_resources: 
+          - backup_restore
+      register: result
+    - name: Create backup and restore
+      dellemc.sfss.sfss_backup_restore:
+        config: 
+        - imageserver_location: 100.104.26.70:/tmp/sfnc-1.0.0.4.deb
+          imageserver_password: force10
+          imageserver_username: root
+          transport_type: SCP
+          operation_type: backup
+        - imageserver_location: 100.94.55.165:/home/dell/temp_images1/sfnc-1.55.0.deb/backup_file.tar.gz
+          imageserver_password: force10
+          imageserver_username: dell55
+          transport_type: SCP
+          operation_type: restore
+        

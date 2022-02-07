@@ -1,0 +1,69 @@
+---
+ansible_connection: httpapi
+module_name: global_policies
+
+
+tests:
+  - name: test_case_01
+    description: creates global policies with 48Hr
+    state: merged
+    input:
+    - zoning_policy: false
+      NameServerEntityPurgeTOV: 48Hr
+      instance_id: 1
+    - zoning_policy: false
+      NameServerEntityPurgeTOV: 48Hr
+      instance_id: 5
+  - name: test_case_02
+    description: creates global policies with 4Hr
+    state: merged
+    input:
+    - zoning_policy: false
+      NameServerEntityPurgeTOV: 4Hr
+      instance_id: 1
+  - name: test_case_03
+    description: creates global policies with 8Hr
+    state: merged
+    input:
+    - zoning_policy: false
+      NameServerEntityPurgeTOV: 8Hr
+      instance_id: 1
+  - name: test_case_04
+    description: creates global policies with 24Hr
+    state: merged
+    input:
+    - zoning_policy: false
+      NameServerEntityPurgeTOV: 24Hr
+      instance_id: 1
+  - name: test_case_05
+    description: creates global policies with 5Sec
+    state: merged
+    input:
+    - zoning_policy: false
+      NameServerEntityPurgeTOV: 5Sec
+      instance_id: 1
+  - name: test_case_05
+    description: creates global policies with NoTimeout
+    state: merged
+    input:
+    - zoning_policy: false
+      NameServerEntityPurgeTOV: NoTimeout
+      instance_id: 1
+  - name: test_case_06
+    description: Updates global policies with zoning policy
+    state: merged
+    input:
+    - zoning_policy: true
+      instance_id: 1
+  - name: test_case_07
+    description: Updates global policies with zoning policy
+    state: merged
+    input:
+    - zoning_policy: false
+      instance_id: 1
+  - name: test_case_08
+    description: Updates global policies with time out
+    state: merged
+    input:
+    - NameServerEntityPurgeTOV: 8Hr
+      instance_id: 1

@@ -1,0 +1,14 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  tasks:
+    - name: Create CDC instances
+      dellemc.sfss.sfss_cdc_instances:
+        config:
+        - admin_state: true
+          discovery_svc_admin_state: false
+          instance_id: 5
+          interfaces:
+          - name: ens192.75

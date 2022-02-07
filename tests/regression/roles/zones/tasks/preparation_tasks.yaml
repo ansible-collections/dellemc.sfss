@@ -1,0 +1,9 @@
+- name: Deletes old zones
+  sfss_zones:
+    config: []
+    state: deleted
+  ignore_errors: yes
+- name: Stfs zone groups create
+  sfss_zone_groups:
+    config: "{{ preparation_tasks.zone_groups }}"
+  ignore_errors: yes

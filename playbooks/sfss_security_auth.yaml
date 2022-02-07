@@ -1,0 +1,62 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: "Gather facts"
+      sfss_facts:
+        gather_subset: min
+        gather_network_resources: 
+          - security_authentication
+      register: result
+    - name: security auth create
+      sfss_security_authentication:
+        config: 
+          - authentication_sequence: ["tacacs+", "local"]
+            authentication_servers:
+            - authentication_type: "radius"
+              server_ip: "205.1.1.1"
+              password: "xxxx"
+            - authentication_type: "radius"
+              server_ip: "210.1.1.1"
+              password: "xxxx"
+            - authentication_type: "tacacs"
+              server_ip: "201.1.1.1"
+              password: "xxxx"
+            - authentication_type: "radius"
+              server_ip: "200.1.1.1"
+              password: "xxxx"
+        state: merged
+    - name: security auth update
+      sfss_security_authentication:
+        config:
+        - authentication_sequence: ["tacacs+", "local"]
+          authentication_servers:
+          - authentication_type: "radius"
+            server_ip: "205.1.1.1"
+            password: "xxxx"
+          - authentication_type: "radius"
+            server_ip: "211.1.1.1"
+            password: "xxxx"
+          - authentication_type: "tacacs"
+            server_ip: "202.1.1.1"
+            password: "xxxx"
+          - authentication_type: "radius"
+            server_ip: "203.1.1.1"
+            password: "xxxx"
+    - name: security auth delete
+      sfss_security_authentication:
+        config:
+          - authentication_sequence: ["tacacs+", "local"]
+            authentication_servers:
+            - authentication_type: "radius"
+              server_ip: "205.1.1.1"
+              password: "xxxx"
+        state: deleted
+    - name: security auth delete
+      sfss_security_authentication:
+        config: []
+        state: deleted

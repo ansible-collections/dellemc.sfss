@@ -1,0 +1,59 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: "Gather facts"
+      sfss_facts:
+        gather_subset: min
+        gather_network_resources: 
+          - app_images
+      register: result
+    - name: SFSS app images create
+      sfss_app_images:
+        config: 
+        - fileserver_host: 100.94.72.166
+          fileserver_password: force1011
+          fileserver_username: dell
+          image_file: /home/dell/temp_images1/sfss-1.2.0.deb
+          transport_type: scp
+          version: 1.6.0
+        - fileserver_host: 100.94.44.166
+          fileserver_password: force1044
+          fileserver_username: dell44
+          image_file: /home/dell/temp_images1/sfss-1.44.0.deb
+          transport_type: scp
+          version: 1.4.0
+    - name: SFSS app images update
+      sfss_app_images:
+        config:
+        - fileserver_host: 100.94.72.166
+          fileserver_password: force10
+          fileserver_username: dell
+          image_file: /home/dell/temp_images1/sfss-1.2.0.deb
+          transport_type: scp
+          version: 1.6.0
+          update_password: True
+        - fileserver_host: 100.94.44.166
+          fileserver_password: force1044
+          fileserver_username: dell44
+          image_file: /home/dell/temp_images1/sfss-1.44.0.deb
+          transport_type: https
+          version: 1.4.0
+    - name: SFSS app images delete
+      sfss_app_images:
+        config:
+        - fileserver_host: 100.94.44.166
+          fileserver_password: force1044
+          fileserver_username: dell44
+          image_file: /home/dell/temp_images1/sfss-1.44.0.deb
+          transport_type: scp
+          version: 1.4.0
+        state: deleted   
+    - name: SFSS app images delete all
+      sfss_app_images:
+        config: []
+        state: deleted

@@ -1,0 +1,33 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  tasks:
+    - name: SFSS zones create
+      dellemc.sfss.sfss_zones:
+        config:
+          - name: reg.zone1
+            instance_id: 1
+            group_name: reg.zone_group1
+            members:
+              data:
+                - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+                  id_type: fqn
+                  role: host
+                - id: ansible2.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+                  id_type: fqn
+                  role: subsystem
+    
+    - name: SFSS zones delete
+      dellemc.sfss.sfss_zones:
+        config:
+          - name: reg.zone1
+            instance_id: 1
+            group_name: reg.zone_group1
+            members:
+              data:
+                - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+                  id_type: fqn
+                  role: host
+        state: deleted

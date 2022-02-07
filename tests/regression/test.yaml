@@ -1,0 +1,21 @@
+---
+- name: "Test SONiC CLI"
+  hosts: datacenter
+  gather_facts: no
+  connection: httpapi
+  vars:
+    file_suffix: "{{ lookup('pipe','date +%Y-%m-%d-%H-%M-%S') }}"
+  collections:
+    - dellemc.sfss
+  roles:
+    # - cdc_instances
+    # - interface_ip_mgmt
+     - endpoints
+     - zones
+     - zone_alias
+     - app_images
+    # - backup_restore
+     - zone_groups
+     - global_policies
+     - security_authentication
+     - test_reports

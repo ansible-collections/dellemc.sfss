@@ -1,0 +1,17 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: Stfs zones create
+      sfss_app_images:
+        config:
+        - fileserver_host: 100.94.72.166
+          fileserver_password: force1011
+          fileserver_username: dell
+          image_file: /home/dell/temp_images1/sfss-1.3.0.deb
+          transport_type: scp
+          version: 1.3.0

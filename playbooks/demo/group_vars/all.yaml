@@ -1,0 +1,121 @@
+sfss_interface_ip_mgmt:
+  - ipv4_address: 52.1.1.2
+    ipv4_config_type: manual
+    ipv4_gateway: 52.1.1.254
+    ipv4_netmask: 16
+    ipv6_address: fe52::1699:6f09:43dd:56c2
+    ipv6_config_type: manual
+    ipv6_gateway: fe52::1699:6f09:43dd:ffff
+    ipv6_netmask: 64
+    parent_interface: ens192
+    vlan_id: 52
+  - ipv4_address: 53.1.1.2
+    ipv4_config_type: manual
+    ipv4_gateway: 53.1.1.254
+    ipv4_netmask: 16
+    ipv6_address: fe53::1699:6f09:43dd:56c2
+    ipv6_config_type: manual
+    ipv6_gateway: fe53::1699:6f09:43dd:ffff
+    ipv6_netmask: 64
+    parent_interface: ens192
+    vlan_id: 53    
+  - ipv4_address: 33.1.1.2
+    ipv4_config_type: manual
+    ipv4_gateway: 33.1.1.254
+    ipv4_netmask: 16
+    ipv6_address: fe33::1699:6f09:43dd:56c2
+    ipv6_config_type: manual
+    ipv6_gateway: fe33::1699:6f09:43dd:ffff
+    ipv6_netmask: 64
+    parent_interface: ens33
+
+sfss_cdc_instances:
+  - admin_state: true
+    discovery_svc_admin_state: false
+    instance_id: 1
+    interfaces:
+    - name: ens192.52
+  - admin_state: true
+    discovery_svc_admin_state: false
+    instance_id: 3
+    interfaces:
+    - name: ens33
+
+sfss_security_authentication:
+  - authentication_sequence: ["tacacs+", "local"]
+    authentication_servers:
+    - authentication_type: "radius"
+      server_ip: "204.1.1.1"
+      password: "xxxx"
+    - authentication_type: "tacacs"
+      server_ip: "201.1.1.1"
+      password: "xxxx" 
+
+sfss_endpoints:
+  - type: subsystem
+    instance_id: 1
+    nqn_id: ansible
+    transport_address: 6::1
+    transport_address_family: ipv6
+    transport_type: tcp
+  - type: host
+    instance_id: 1
+    nqn_id: ansible
+    transport_address: 5::1
+    transport_address_family: ipv6
+  - type: host
+    instance_id: 1
+    nqn_id: ansible
+    transport_address: 4.1.1.1
+    transport_address_family: ipv4
+
+sfss_endpoints_for_alias:
+    - type: subsystem
+      instance_id: 1
+      nqn_id: demo_alias
+      transport_address: 16::1
+      transport_address_family: ipv6
+      transport_type: tcp
+    - type: host
+      instance_id: 1
+      nqn_id: demo_alias
+      transport_address: 15::1 # Mandatory
+      transport_address_family: ipv6 # Mandatory        
+    - type: host
+      instance_id: 1
+      nqn_id: demo_alias
+      transport_address: 14.1.1.1 # Mandatory
+      transport_address_family: ipv4 # Mandatory
+
+sfss_zone_alias:
+    - name: Ansible123
+      instance_id: 1
+      members:
+        data: 
+          - id: demo_alias@<>:V6::0:0:TCP
+            type: fqn
+            role: subsystem
+          - id: demo_alias
+            type: nqn
+            role: host
+
+sfss_zones:
+  - name: demo.zone1
+    instance_id: 1
+    group_name: demo.zone_group1
+    members:
+      data:
+        - id: ansible.subsystem1
+          id_type: nqn
+          role: subsystem
+        - id: ansible
+          id_type: nqn
+          role: host
+
+sfss_zone_groups:
+    - name: ansible.zone_grp1
+      instance_id: 1
+      activate_status: true
+    - name: demo.zone_group1
+      instance_id: 1
+      activate_status: true      

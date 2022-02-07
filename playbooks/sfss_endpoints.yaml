@@ -1,0 +1,70 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: "Gather facts"
+      sfss_facts:
+        gather_subset: min
+        gather_network_resources: 
+          - endpoints
+      register: result
+    - name: Stfs endpoints ddc create
+      sfss_endpoints:
+        config:
+        - type: ddc
+          instance_id: 1
+          transport_address: 7.5.5.5
+          transport_address_family: ipv4
+          ddc_activate: true
+        state: merged
+    - name: Stfs endpoints host create
+      sfss_endpoints:
+        config:
+        - type: host
+          instance_id: 1
+          transport_address: 4::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+    - name: Stfs endpoints subsystem create
+      sfss_endpoints:
+        config:
+        - type: subsystem
+          instance_id: 1
+          nqn_id: ansible1.2014-08.org.nvmexpress:uuid:subsystem
+          transport_address: 6::1
+          transport_address_family: ipv6
+          transport_type: tcp
+    - name: Stfs endpoints ddc delete
+      sfss_endpoints:
+        config:
+        - type: ddc
+          instance_id: 1
+          transport_address: 7.5.5.5
+          transport_address_family: ipv4
+          ddc_activate: true
+        state: deleted
+    - name: Stfs endpoints host delete
+      sfss_endpoints:
+        config:
+        - type: host
+          instance_id: 1
+          transport_address: 4::1 # Mandatory
+          transport_address_family: ipv6 # Mandatory
+        state: deleted
+    - name: Stfs endpoints subsystem delete
+      sfss_endpoints:
+        config:
+        - type: subsystem
+          instance_id: 1
+          nqn_id: ansible1.2014-08.org.nvmexpress:uuid:subsystem
+          transport_address: 6::1
+          transport_address_family: ipv6
+          transport_type: tcp
+        state: deleted
+    - name: Stfs endpoints delete all
+      sfss_endpoints:
+        config: []
+        state: deleted

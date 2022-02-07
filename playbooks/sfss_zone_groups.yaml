@@ -1,0 +1,39 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    - name: "Gather facts"
+      sfss_facts:
+        gather_subset: min
+        gather_network_resources: 
+          - zone_groups
+      register: result
+    - name: Stfs zones create
+      sfss_zone_groups:
+        config:
+          - name: ansible.zone_grp2
+            instance_id: 1
+            activate_status: false
+    - name: Stfs zones create
+      sfss_zone_groups:
+        config:
+          - name: ansible.zone_grp1
+            instance_id: 1
+            activate_status: true
+    - name: Stfs zones update
+      sfss_zone_groups:
+        config:
+          - name: ansible.zone_grp2
+            instance_id: 1
+            activate_status: true
+            
+    - name: delete zone_groups
+      sfss_zone_groups:
+        config:
+        - name: ansible.zone_grp2
+          instance_id: 1
+        state: deleted

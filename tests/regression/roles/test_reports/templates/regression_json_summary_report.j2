@@ -1,0 +1,43 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+
+{
+	"date": "{{ date}}",
+	"time": "{{ time }}",
+	"sonic_os_version": "3.2",
+	"testcase_summary": [
+
+{% set complete_passed = [0] %}
+{% set complete_failed = [0] %}
+{% set complete_total = [0] %}
+{% for module_name, test_data_list in ansible_facts.test_reports.items() %}
+{% set passed = [0] %}
+{% set failed = [0] %}
+{% set total = [0] %}
+{% for testcase_name, test_data in test_data_list.items() %}
+{% if total.append(total.pop() + 1) %}{% endif %}
+{% if complete_total.append(complete_total.pop() + 1) %}{% endif %}
+
+{% if 'Passed' in test_data.status  %}
+{% if passed.append(passed.pop() + 1) %}{% endif %}
+{% if complete_passed.append(complete_passed.pop() + 1) %}{% endif %}
+{% endif %}
+
+{% if 'Failed' in test_data.status  %}
+{% if failed.append(failed.pop() + 1) %}{% endif %}
+{% if complete_failed.append(complete_failed.pop() + 1) %}{% endif %}
+{% endif %}
+{% endfor %}
+{"module_name": "{{ module_name }}",
+"total": {{ total[0] }},
+"passed": {{ passed[0] }},
+"failed": {{ failed[0] }}
+}
+{{ ", " if not loop.last else "" }}
+{% endfor %}
+],
+"testcase_complete_summary": {
+"total": {{ complete_total[0] }},
+"passed": {{ complete_passed[0] }},
+"failed": {{ complete_failed[0] }}
+}
+}

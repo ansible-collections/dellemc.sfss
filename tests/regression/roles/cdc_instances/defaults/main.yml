@@ -1,0 +1,137 @@
+---
+ansible_connection: httpapi
+module_name: cdc_instances
+
+preparation_input:
+  interface_ip_mgmt:
+    - ipv4_address: 76.1.1.2
+      ipv4_config_type: manual
+      ipv4_gateway: 76.1.1.254
+      ipv4_netmask: 16
+      ipv6_address: fe76::1699:6f09:43dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe76::1699:6f09:43dd:ffff
+      ipv6_netmask: 64
+      parent_interface: ens192
+      vlan_id: 76
+    - ipv4_address: 77.1.1.2
+      ipv4_config_type: manual
+      ipv4_gateway: 77.1.1.254
+      ipv4_netmask: 16
+      ipv6_address: fe77::1699:6f09:43dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe77::1699:6f09:43dd:ffff
+      ipv6_netmask: 77
+      parent_interface: ens192     
+      vlan_id: 77
+    - ipv4_address: 75.1.1.2
+      ipv4_config_type: manual
+      ipv4_gateway: 75.1.1.254
+      ipv4_netmask: 16
+      ipv6_address: fe75::1699:6f09:43dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe75::1699:6f09:43dd:ffff
+      ipv6_netmask: 75
+      parent_interface: ens192     
+      vlan_id: 75      
+    - ipv4_address: 74.1.1.2
+      ipv4_config_type: manual
+      ipv4_gateway: 74.1.1.254
+      ipv4_netmask: 16
+      ipv6_address: fe74::1699:6f09:43dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe74::1699:6f09:43dd:ffff
+      ipv6_netmask: 74
+      parent_interface: ens192     
+      vlan_id: 74   
+    - ipv4_address: 33.1.1.2
+      ipv4_config_type: manual
+      ipv4_gateway: 33.1.1.254
+      ipv4_netmask: 16
+      ipv6_address: fe33::1699:6f09:43dd:56c2
+      ipv6_config_type: manual
+      ipv6_gateway: fe33::1699:6f09:43dd:ffff
+      ipv6_netmask: 64
+      parent_interface: ens33    
+
+tests:
+  - name: test_case_01
+    description: creates CDC instances
+    state: merged
+    input:
+    - admin_state: true
+      discovery_svc_admin_state: false
+      instance_id: 2
+      interfaces:
+      - name: ens192.76
+    - admin_state: true
+      discovery_svc_admin_state: false
+      instance_id: 1
+      interfaces:
+      - name: ens192.77
+
+  - name: test_case_02
+    description: update state update
+    state: merged
+    input:
+    - admin_state: true
+      discovery_svc_admin_state: true
+      instance_id: 2
+      interfaces:
+      - name: ens192.76
+    - admin_state: false
+      discovery_svc_admin_state: false
+      instance_id: 1
+      interfaces:
+      - name: ens192.77       
+
+  - name: test_case_03
+    description: update interface update
+    state: merged
+    input:
+    - admin_state: true
+      discovery_svc_admin_state: false
+      instance_id: 2
+      interfaces:
+      - name: ens192.76
+      - name: ens192.75
+    - admin_state: true
+      discovery_svc_admin_state: false
+      instance_id: 5
+      interfaces:
+      - name: ens192.74
+    - admin_state: false
+      discovery_svc_admin_state: false
+      instance_id: 7
+      interfaces:
+      - name: ens33
+      
+  - name: test_case_04
+    description: delete specifccd instace
+    state: deleted
+    input:
+    - admin_state: false
+      discovery_svc_admin_state: false
+      instance_id: 7
+      interfaces:
+      - name: ens33
+
+  - name: test_case_05
+    description: delete all instances
+    state: deleted
+    input: []
+
+  - name: test_case_06
+    description: creates CDC instances
+    state: merged
+    input:
+    - admin_state: true
+      discovery_svc_admin_state: false
+      instance_id: 2
+      interfaces:
+      - name: ens192.76
+    - admin_state: true
+      discovery_svc_admin_state: false
+      instance_id: 1
+      interfaces:
+      - name: ens192.77

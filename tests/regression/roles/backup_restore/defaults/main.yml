@@ -1,0 +1,65 @@
+---
+ansible_connection: httpapi
+module_name: backup_restore
+
+
+tests:
+  - name: test_case_01
+    description: creates Backup and Restore with SCP
+    state: merged
+    input:
+    - imageserver_location: 100.104.26.70:/tmp/sfnc-1.0.0.4.deb
+      imageserver_password: force10
+      imageserver_username: root
+      transport_type: SCP
+      operation_type: backup
+    - imageserver_location: 100.94.55.165:/home/dell/temp_images1/sfnc-1.55.0.deb/backup_file.tar.gz
+      imageserver_password: force10
+      imageserver_username: dell55
+      transport_type: SCP
+      operation_type: restore
+
+  - name: test_case_02
+    description: creates Backup and Restore with HTTP
+    state: merged
+    input:
+    - imageserver_location: 100.104.26.71:/tmp/sfnc-1.0.0.4.deb
+      imageserver_password: force10
+      imageserver_username: root
+      transport_type: HTTP
+      operation_type: backup
+    - imageserver_location: 100.94.55.164:/home/dell/temp_images1/sfnc-1.55.0.deb/backup_file.tar.gz
+      imageserver_password: force10
+      imageserver_username: dell55
+      transport_type: HTTP
+      operation_type: restore
+  
+  - name: test_case_03
+    description: creates Backup with HTTPS
+    state: merged
+    input:
+    - imageserver_location: 100.104.26.71:/tmp/sfnc-1.0.0.4.deb
+      imageserver_password: force10
+      imageserver_username: root
+      transport_type: HTTPS
+      operation_type: backup
+    - imageserver_location: 100.94.55.164:/home/dell/temp_images1/sfnc-1.55.0.deb/backup_file.tar.gz
+      imageserver_password: force10
+      imageserver_username: dell55
+      transport_type: HTTPS
+      operation_type: restore
+  
+  - name: test_case_04
+    description: creates Backup with SFTP
+    state: merged
+    input:
+    - imageserver_location: 100.104.26.71:/tmp/sfnc-1.0.0.4.deb
+      imageserver_password: force10
+      imageserver_username: root
+      transport_type: SFTP
+      operation_type: backup
+    - imageserver_location: 100.94.55.164:/home/dell/temp_images1/sfnc-1.55.0.deb/backup_file.tar.gz
+      imageserver_password: force10
+      imageserver_username: dell55
+      transport_type: SFTP
+      operation_type: restore

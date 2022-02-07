@@ -1,0 +1,98 @@
+---
+ansible_connection: httpapi
+module_name: zone_alias
+
+
+tests:
+  - name: test_case_01
+    description: creates Zones
+    state: merged
+    input:
+    - name: zone_alais1
+      instance_id: 1
+      members:
+        data: 
+          - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+            type: 'nqn'
+            role: 'subsystem'
+          - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+            type: 'fqn'
+            role: 'host'
+    - name: zone_alais2
+      instance_id: 1
+    - name: zone_alais3
+      instance_id: 1
+      members:
+        data: 
+          - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+            type: 'nqn'
+            role: 'subsystem'
+          - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+            type: 'fqn'
+            role: 'host'      
+    - name: zone_alais4
+      instance_id: 1         
+  - name: test_case_02
+    description: creates Zones
+    state: merged
+    input:
+    - name: zone_alais1
+      instance_id: 1
+      members:
+        data: 
+          - id: "nqn2.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+            type: 'fqn'
+            role: 'host'
+          - id: "nqn3.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+            type: 'nqn'
+            role: 'subsystem'
+    - name: zone_alais2
+      instance_id: 1
+      members:
+        data: 
+          - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+            type: 'fqn'
+            role: 'host'      
+          - id: "nqn2.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+            type: 'nqn'
+            role: 'subsystem'                  
+
+  - name: test_case_03
+    description: delete one Zone alias members
+    state: deleted
+    input:
+    - name: zone_alais1
+      instance_id: 1
+      members:
+        data: 
+          - id: "nqn2.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+            type: 'fqn'
+            role: 'host'
+              
+  - name: test_case_04
+    description: delete all Zone alias members
+    state: deleted
+    input:
+    - name: zone_alais1
+      instance_id: 1
+      members:
+        data: 
+
+  - name: test_case_05
+    description: delete Zone alias without members
+    state: deleted
+    input:
+    - name: zone_alais1
+      instance_id: 1
+
+  - name: test_case_06
+    description: delete Zone alias with members
+    state: deleted
+    input:
+    - name: zone_alais3
+      instance_id: 1
+
+  - name: test_case_07
+    description: delete all Zone alias
+    state: deleted
+    input: []

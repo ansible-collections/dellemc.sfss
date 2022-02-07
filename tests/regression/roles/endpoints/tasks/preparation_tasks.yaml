@@ -1,0 +1,17 @@
+- name: Create Interface MGMT IPs
+  sfss_interface_ip_mgmt:
+    config: "{{ common_preparation_input.interface_ip_mgmt }}"
+  when: common_preparation_input.interface_ip_mgmt is defined
+  ignore_errors: yes
+- name: Create Interface MGMT IPs
+  sfss_cdc_instances:
+    config: "{{ common_preparation_input.cdc_instances }}"
+  when: common_preparation_input.cdc_instances is defined
+  ignore_errors: yes
+- pause: 
+    seconds: 30  
+- name: Deletes old endpoints
+  sfss_endpoints:
+    config: []
+    state: deleted
+  ignore_errors: yes

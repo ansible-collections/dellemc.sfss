@@ -1,0 +1,27 @@
+---
+- name: Ansible resource module example
+  hosts: datacenter
+  gather_facts: False
+  connection: httpapi
+  collections:
+     - dellemc.sfss
+  tasks:
+    # - name: Stfs zones create
+    #   sfss_interface_ip_mgmt:
+    #     config: "{{ sfss_interface_ip_mgmt }}"
+    #     state: merged
+    - name: Create CDC instances
+      sfss_cdc_instances:
+        config: 
+        - admin_state: true
+          discovery_svc_admin_state: false
+          instance_id: 4
+          interfaces:
+          - name: ens192.53
+        state: merged
+    # - name: Pause for 20 seconds for CDC instances to get created
+    #   pause:
+    #     seconds: 20
+    # - name: security auth create
+    #   sfss_security_authentication:
+    #     config: "{{ sfss_security_authentication }}"
