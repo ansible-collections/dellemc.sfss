@@ -49,7 +49,7 @@ class Interface_ip_mgmt(StfsConfigBase):
         self.test_keys = [{'config': {'ipv4_address': '', 'ipv4_config_type': '', 'ipv4_gateway': '',
                                       'ipv4_netmask': '', 'ipv6_address': '', 'ipv6_config_type': '',
                                       'ipv6_gateway': '', 'ipv6_netmask': '', 'parent_interface': '',
-                                      'vlan_id': ''}}]
+                                      'vlan_id': '', 'name': ''}}]
 
     def resource_id(self, data):
         parent_interface = data.get('parent_interface')
@@ -58,14 +58,14 @@ class Interface_ip_mgmt(StfsConfigBase):
                                                      vlan_id=vlan_id)
 
     def build_delete_all_requests(self, commands):
+        debug("in delete all requests ", commands)
         ret_requests = []
         ret_commands = []
         if commands:
             for app_image in commands:
-                if "1.0.0" in app_image.get('version'):
-                    continue
-                ret_requests.append(self.build_delete_request(app_image))
-                ret_commands.append(app_image)
+                if app_image["vlan_id"]:
+                    ret_requests.append(self.build_delete_request(app_image))
+                    ret_commands.append(app_image)
 
         return ret_commands, ret_requests
 
@@ -83,11 +83,13 @@ class Interface_ip_mgmt(StfsConfigBase):
         return ret_commands, ret_requests
 
     def build_create_request(self, have, data):
+        debug('in build create request ', data)
         url = INF_IP_MGMT_BASE_URL
         method = "POST"
         return self.build_request(url, method, data)
 
     def build_update_requests(self, have, matched_have, data):
+        debug('in build update request ', data)
         parent_interface = data.get('parent_interface')
         vlan_id = data.get('vlan_id')
         interface_name = parent_interface
@@ -112,9 +114,13 @@ class Interface_ip_mgmt(StfsConfigBase):
 
         parent_interface = data.get('parent_interface')
         vlan_id = data.get('vlan_id')
+        name = data.get('name')
 
         payload = {"IPV6Config": ipv6_config_type,
                    "IPV4Config": ipv4_config_type}
+
+        if name:
+            payload.update({"Name": name})
 
         if vlan_id:
             payload.update({"ParentInterface": parent_interface,
@@ -131,6 +137,28 @@ class Interface_ip_mgmt(StfsConfigBase):
             payload.update({"IPV6Address": [ipv6_address],
                             "IPV6Gateway": ipv6_gateway,
                             "IPV6PrefixLength": ipv6_netmask})
+
+        # if vlan_id and ipv4_config_type == "MANUAL" and data.get("ipv4_routes"):
+        #     ip_route = []
+        #     for route in data.get("ipv4_routes"):
+        #         route_dict = { "Destination" : route['destination'],
+        #                        "DestinationPrefix" : route['destination_prefix'],
+        #                        "Metric" : route['metric'],
+        #                        "NextHop" : route['next_hop']
+        #                     }
+        #         ip_route.append(route_dict)
+        #     payload.update({"IPV4Route" : ip_route})
+
+        # if vlan_id and ipv6_config_type == "MANUAL" and data.get("ipv6_routes"):
+        #     ip_route = []
+        #     for route in data.get("ipv6_routes"):
+        #         route_dict = { "Destination" : route['destination'],
+        #                        "DestinationPrefix" : route['destination_prefix'],
+        #                        "Metric" : route['metric'],
+        #                        "NextHop" : route['next_hop']
+        #                     }
+        #         ip_route.append(route_dict)
+        #     payload.update({"IPV6Route" : ip_route})
 
         request = {"method": method,
                    "path": url,

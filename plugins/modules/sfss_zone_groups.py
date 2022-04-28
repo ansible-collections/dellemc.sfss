@@ -61,6 +61,10 @@ options:
         description:
           - Activate the zone group.
         type: bool
+      activation_state:
+        description:
+          - Activation status of the zone group.
+        type: str
   state:
     description:
       - The state the configuration should be left in.

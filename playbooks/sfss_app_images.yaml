@@ -12,37 +12,51 @@
         gather_network_resources: 
           - app_images
       register: result
+    - debug: var=result['ansible_facts']['ansible_network_resources']['app_images'] 
+    
     - name: SFSS app images create
       sfss_app_images:
         config: 
-        - fileserver_host: 100.94.72.166
-          fileserver_password: force1011
-          fileserver_username: dell
-          image_file: /home/dell/temp_images1/sfss-1.2.0.deb
-          transport_type: scp
-          version: 1.6.0
+        - fileserver_host: 100.104.120.72
+          image_file: /tftpboot/users/pavithra.elango/sfss-1.1.0.0010.deb
+          transport_type: http
         - fileserver_host: 100.94.44.166
           fileserver_password: force1044
           fileserver_username: dell44
           image_file: /home/dell/temp_images1/sfss-1.44.0.deb
           transport_type: scp
-          version: 1.4.0
+      register: create_res
+    
+    - name: SFSS app images create idempotent
+      sfss_app_images:
+        config: 
+        - fileserver_host: 100.104.120.72
+          image_file: /tftpboot/users/pavithra.elango/sfss-1.1.0.0010.deb
+          transport_type: http
+        - fileserver_host: 100.94.44.166
+          fileserver_password: force1044
+          fileserver_username: dell44
+          image_file: /home/dell/temp_images1/sfss-1.44.0.deb
+          transport_type: scp
+    
+    - debug: var=create_res["after"]
+
+    - set_fact: id="{{ item.image_id}}"
+      with_items:
+        "{{ create_res.after }}"
+      when: item.fileserver_host == "100.94.44.166"
+    
     - name: SFSS app images update
       sfss_app_images:
         config:
-        - fileserver_host: 100.94.72.166
+        - fileserver_host: 100.94.44.166
           fileserver_password: force10
           fileserver_username: dell
           image_file: /home/dell/temp_images1/sfss-1.2.0.deb
           transport_type: scp
-          version: 1.6.0
+          image_id: "{{ id }}"
           update_password: True
-        - fileserver_host: 100.94.44.166
-          fileserver_password: force1044
-          fileserver_username: dell44
-          image_file: /home/dell/temp_images1/sfss-1.44.0.deb
-          transport_type: https
-          version: 1.4.0
+
     - name: SFSS app images delete
       sfss_app_images:
         config:
@@ -51,8 +65,12 @@
           fileserver_username: dell44
           image_file: /home/dell/temp_images1/sfss-1.44.0.deb
           transport_type: scp
-          version: 1.4.0
-        state: deleted   
+          image_id: "{{ id }}"
+        state: deleted
+
+    - pause: 
+        seconds: 30  
+  
     - name: SFSS app images delete all
       sfss_app_images:
         config: []

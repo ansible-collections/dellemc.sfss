@@ -64,6 +64,7 @@ class App_imagesFacts(StfsFactsBase):
             fileserver_host = image_file_loc.split(":")[0]
 
         version = data.get('Version')
+        image_id = data.get('ImageId')
         fileserver_username = data.get('ImageServerUserName')
         fileserver_password = data.get('ImageServerPassword')
         transport_type_val = data.get('TransportType')
@@ -79,6 +80,7 @@ class App_imagesFacts(StfsFactsBase):
             "transport_type": transport_type,
             "status": status,
             "version": version,
+            "image_id": image_id,
             "status_message": status_message
         })
         return app_image

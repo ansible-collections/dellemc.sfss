@@ -61,11 +61,14 @@ class Interface_ip_mgmtFacts(StfsFactsBase):
         interface = data.get('Interface')
         ipv4_config_type = data.get('IPV4Config').lower()
         ipv6_config_type = data.get('IPV6Config').lower()
+        name = data.get('Name')
 
         vlan_id = data.get('VlanId')
 
         ret = {"ipv4_config_type": ipv4_config_type,
-               "ipv6_config_type": ipv6_config_type}
+               "ipv6_config_type": ipv6_config_type,
+               "name": name,
+               }
 
         if inf_type == "VLAN":
             ret.update({
@@ -81,7 +84,7 @@ class Interface_ip_mgmtFacts(StfsFactsBase):
             ret.update({
                 "ipv4_address": data.get('IPV4Address')[0],
                 "ipv4_netmask": data.get('IPV4PrefixLength'),
-                "ipv4_gateway": data.get('IPV4Gateway')
+                "ipv4_gateway": data.get('IPV4Gateway'),
             })
 
         if ipv6_config_type == "manual":
@@ -90,5 +93,33 @@ class Interface_ip_mgmtFacts(StfsFactsBase):
                 "ipv6_netmask": data.get('IPV6PrefixLength'),
                 "ipv6_gateway": data.get('IPV6Gateway')
             })
+
+        # if ipv4_config_type == "manual" and inf_type == "VLAN" and data.get("IPV4Route"):
+        #     ip_route = []
+        #     for route in data.get("IPV4Route"):
+        #         route_dict = { "destination" : route['Destination'],
+        #                        "destination_prefix" : route['DestinationPrefix'],
+        #                        "metric" : route['Metric'],
+        #                        "next_hop" : route['NextHop']
+        #                     }
+        #         ip_route.append(route_dict)
+
+        #     ret.update({
+        #         "ipv4_routes": ip_route
+        #     })
+
+        # if ipv6_config_type == "manual" and inf_type == "VLAN" and data.get("IPV6Route"):
+        #     ip_route = []
+        #     for route in data.get("IPV6Route"):
+        #         route_dict = { "destination" : route['Destination'],
+        #                        "destination_prefix" : route['DestinationPrefix'],
+        #                        "metric" : route['Metric'],
+        #                        "next_hop" : route['NextHop']
+        #                     }
+        #         ip_route.append(route_dict)
+
+        #     ret.update({
+        #         "ipv6_routes": ip_route
+        #     })
 
         return ret

@@ -51,6 +51,19 @@ class App_image_upgrade(StfsConfigBase):
         url = SFSS_APP_GET
         method = "PUT"
         version = app.get('image_version')
+        # To Do in case of Preventing Downgrade of Image
+        # have_version = have.get('image_version')
+        # version_splitted = version.split(".")
+        # have_version_spliited = have_version.split(".")
+        # ver_len = len(version_splitted)
+        # if ver_len > len(have_version_spliited):
+        #     ver_len = len(have_version_spliited)
+        # if ver_len > 3:
+        #     ver_len = 3
+        # for i in range(ver_len):
+        #     if int(version_splitted[i]) < int(have_version_spliited[i]):
+        #         return []
+        # If downgrade condition fails then upgrade the image
 
         payload = {"Version": version}
         request = {

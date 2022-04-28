@@ -38,6 +38,7 @@ class Zone_groupsArgs(object):  # pylint: disable=R0903
 
     argument_spec = {'config': {'elements': 'dict',
                                 'options': {'activate_status': {'type': 'bool'},
+                                            'activation_state': {'type': 'str'},
                                             'instance_id': {'required': True, 'type': 'int'},
                                             'name': {'required': True, 'type': 'str'}},
                                 'type': 'list'},

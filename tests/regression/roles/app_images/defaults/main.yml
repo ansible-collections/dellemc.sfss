@@ -13,55 +13,24 @@ tests:
       fileserver_username: dell
       image_file: /home/dell/temp_images1/sfss-1.2.0.deb
       transport_type: scp
-      version: 1.2.0
     - fileserver_host: 100.94.72.166
       fileserver_password: force1012
       fileserver_username: dell
       image_file: /home/dell/temp_images1/sfss-1.3.0.deb
       transport_type: scp
-      version: 1.3.0
     - fileserver_host: 100.94.72.166
       fileserver_password: force1013
       fileserver_username: dell
       image_file: /home/dell/temp_images1/sfss-1.4.0.deb
       transport_type: scp
-      version: 1.4.0
     - fileserver_host: 100.94.72.166
       fileserver_password: force1014
       fileserver_username: dell
       image_file: /home/dell/temp_images1/sfss-1.5.0.deb
       transport_type: scp
-      version: 1.5.0        
+    register: create_res
 
   - name: test_case_02
-    description: update state update
-    state: merged
-    input:
-    - fileserver_host: 100.94.44.166
-      fileserver_password: force1044
-      fileserver_username: dell44
-      image_file: /home/dell/temp_images1/sfss-1.44.0.deb
-      transport_type: scp
-      version: 1.4.0
-    - fileserver_host: 100.94.55.166
-      fileserver_password: force1055
-      fileserver_username: dell55
-      image_file: /home/dell/temp_images1/sfss-1.55.0.deb
-      transport_type: scp
-      version: 1.5.0    
-
-  - name: test_case_03
-    description: delete specifccd instace
-    state: deleted
-    input:
-    - fileserver_host: 100.94.44.166
-      fileserver_password: force1044
-      fileserver_username: dell44
-      image_file: /home/dell/temp_images1/sfss-1.44.0.deb
-      transport_type: scp
-      version: 1.4.0
-
-  - name: test_case_04
     description: delete all instances
     state: deleted
     input: []

@@ -12,10 +12,50 @@
         gather_network_resources: 
           - interface_ip_mgmt
       register: result
-    - name: Sfss ip interface create
+    - name: Sfss ip interface edit ethernet interface
       sfss_interface_ip_mgmt:
         config:
-        - ipv4_address: 52.1.1.2
+        - ipv4_address: 1.1.1.1
+          ipv4_config_type: manual
+          ipv4_gateway: 0.0.0.0
+          ipv4_netmask: 32
+          ipv6_config_type: automatic
+          parent_interface: ens192
+
+    - name: Sfss ip vlan interface create with interface name
+      sfss_interface_ip_mgmt:
+        config:
+        - ipv4_address: 52.2.2.2
+          ipv4_config_type: manual
+          ipv4_gateway: 52.1.1.254
+          ipv4_netmask: 16
+          ipv6_address: fe52::1699:6f09:43dd:56c2
+          ipv6_config_type: manual
+          ipv6_gateway: fe52::1699:6f09:43dd:ffff
+          ipv6_netmask: 64
+          parent_interface: ens192
+          vlan_id: 51
+          name: vlan interface
+
+    - name: Sfss ip vlan interface edit name
+      sfss_interface_ip_mgmt:
+        config:
+        - ipv4_address: 52.2.2.2
+          ipv4_config_type: manual
+          ipv4_gateway: 52.1.1.254
+          ipv4_netmask: 16
+          ipv6_address: fe52::1699:6f09:43dd:56c2
+          ipv6_config_type: manual
+          ipv6_gateway: fe52::1699:6f09:43dd:ffff
+          ipv6_netmask: 64
+          parent_interface: ens192
+          vlan_id: 51
+          name: vlan interface edited
+    
+    - name: Sfss ip vlan interface delete name
+      sfss_interface_ip_mgmt:
+        config:
+        - ipv4_address: 52.2.2.2
           ipv4_config_type: manual
           ipv4_gateway: 52.1.1.254
           ipv4_netmask: 16
@@ -39,4 +79,9 @@
           ipv6_netmask: 64
           parent_interface: ens192
           vlan_id: 51
+        state: deleted
+    
+    - name: SFSS Ip interface delete all vlan interfaces
+      sfss_interface_ip_mgmt:
+        config: []
         state: deleted
