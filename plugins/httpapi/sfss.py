@@ -21,22 +21,22 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 DOCUMENTATION = """
----
 author: Ansible Networking Team
 httpapi: sfss
 short_description: HttpApi Plugin for devices supporting Restconf SFSS
 description:
-  - This HttpApi plugin provides methods to connect to Restconf SFSS
-version_added: "1.0.0"
+- This HttpApi plugin provides methods to connect to Restconf SFSS
+version_added: "1.0.1"
 options:
   root_path:
     type: str
     description:
-      - Specifies the location of the Restconf root.
+    - Specifies the location of the Restconf root.
     default: '/restconf'
     vars:
-      - name: ansible_httpapi_restconf_root
+    - name: ansible_httpapi_restconf_root
 """
+
 
 import json
 

@@ -13,7 +13,7 @@ __metaclass__ = type
 DOCUMENTATION = """
 ---
 module: sfss_facts
-version_added: 1.0.0
+version_added: 1.0.1
 short_description: Get facts about SFSS devices
 description:
   - Collects facts from network devices running the SFSS application.
@@ -25,11 +25,11 @@ author: Mohamed Javeed (@javeedf)
 options:
   gather_subset:
     description:
-      - When supplied, this argument will restrict the facts collected
+      - When supplied, this argument restricts the facts collected
         to a given subset. Possible values for this argument include
         all, min, hardware, config, legacy, and interfaces. Can specify a
         list of values to include a larger subset. Values can also be used
-        with an initial C(M(!)) to specify that a specific subset should
+        with an initial '!' to specify that a specific subset should
         not be collected.
     required: false
     default: '!config'
@@ -37,11 +37,11 @@ options:
     elements: str
   gather_network_resources:
     description:
-      - When supplied, this argument will restrict the facts collected
+      - When supplied, this argument restricts the facts collected
         to a given subset. Possible values for this argument include
         all and the resources like interfaces, vlans etc.
         Can specify a list of values to include a larger subset. Values
-        can also be used with an initial C(M(!)) to specify that a
+        can also be used with an initial '!' to specify that a
         specific subset should not be collected.
     required: false
     type: list
