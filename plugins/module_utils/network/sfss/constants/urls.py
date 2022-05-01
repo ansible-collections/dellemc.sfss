@@ -58,7 +58,7 @@ ZONE_DELETE_URL = ZONE_CREATE_URL + "('{zone_id}')?$source=config"
 APP_IMAGES_BASE_URL = SFSS_APP_BASE + "SFSSImages"
 APP_IMAGES_GET_URL = APP_IMAGES_BASE_URL + "?$expand=SFSSImages"
 APP_IMAGES_SPECIFIC_GET_URL = APP_IMAGES_GET_URL + "({instance_id})"
-APP_IMAGES_UPDATE_URL = APP_IMAGES_BASE_URL + "({version})"
+APP_IMAGES_UPDATE_URL = APP_IMAGES_BASE_URL + "({image_id})"
 
 # Interface IP management
 INF_IP_MGMT_BASE_URL = SFSS_APP_BASE + "IpAddressManagements"

@@ -66,10 +66,12 @@ class Zone_groupsFacts(StfsFactsBase):
                     name = zone_group.get('zoneGroupName')
                     activate_state_str = zone_group.get('ActivateStatus')
                     active_state = retransform_zone_group_active_state(activate_state_str)
+                    activation_state = zone_group.get('ActivationState')
                     ret_zone_groups.append({
                         "instance_id": instance_id,
                         "name": name,
-                        "activate_status": active_state
+                        "activate_status": active_state,
+                        "activation_state": activation_state
                     })
 
         return ret_zone_groups

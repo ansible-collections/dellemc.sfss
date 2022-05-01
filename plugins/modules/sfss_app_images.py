@@ -50,7 +50,10 @@ options:
         description:
           - Image version.
         type: str
-        required: True
+      image_id:
+        description:
+          - Unique Id assigned to image on creation.
+        type: str
       status:
         description:
           - Status of the download process.
@@ -84,9 +87,10 @@ options:
         description:
           - Transport type.
         type: str
+        required: True
         choices:
         - scp
-        - ftp
+        - sftp
         - http
         - https
         - None

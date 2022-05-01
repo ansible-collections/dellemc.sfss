@@ -53,7 +53,7 @@ class Zone_groups(StfsConfigBase):
     def __init__(self, module):
         super(Zone_groups, self).__init__(module)
         self.resource_name = "zone_groups"
-        self.test_keys = [{'config': {'instance_id': '', 'name': '', 'activate_status': ''}}]
+        self.test_keys = [{'config': {'instance_id': '', 'name': '', 'activate_status': '', 'activation_state': ''}}]
 
     def get_orginate_nqns_data(self):
         return get_orginate_nqns(self)
@@ -78,6 +78,8 @@ class Zone_groups(StfsConfigBase):
         have_activate_status = matched_have.get('activate_status')
         requests = []
         if want_activate_status != have_activate_status:
+            requests.append(self.build_activate_status_req(instance_id, zone_group_name, want_activate_status))
+        if matched_have.get('activation_state') == 'ReActivationNeeded' and want_activate_status:
             requests.append(self.build_activate_status_req(instance_id, zone_group_name, want_activate_status))
 
         return requests

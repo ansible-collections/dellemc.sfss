@@ -8,13 +8,13 @@
   collections:
     - dellemc.sfss
   roles:
-    # - cdc_instances
-    # - interface_ip_mgmt
+     - cdc_instances
+     - interface_ip_mgmt
      - endpoints
      - zones
      - zone_alias
      - app_images
-    # - backup_restore
+     - backup_restore
      - zone_groups
      - global_policies
      - security_authentication

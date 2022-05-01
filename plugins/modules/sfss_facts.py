@@ -13,7 +13,7 @@ __metaclass__ = type
 DOCUMENTATION = """
 ---
 module: sfss_facts
-version_added: 1.0.0
+version_added: 1.1.0
 short_description: Get facts about SFSS devices
 description:
   - Collects facts from network devices running the SFSS application.

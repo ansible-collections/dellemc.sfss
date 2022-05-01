@@ -96,6 +96,10 @@ options:
         choices:
         - manual
         - automatic
+      name:
+        description:
+          - Name of the Interface.
+        type: str
   state:
     description:
       - The state the configuration should be left in.

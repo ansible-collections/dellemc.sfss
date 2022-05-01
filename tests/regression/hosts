@@ -1,5 +1,5 @@
 #cdc1 ansible_host=100.104.26.67 ansible_user=admin ansible_password=force10
-cdc1 ansible_host=100.104.26.124 ansible_user=admin ansible_password=Dell@force10
+cdc1 ansible_host=100.104.26.139 ansible_user=admin ansible_password=Dell@force10
 #cdc1 ansible_host=100.94.73.205 ansible_user=admin ansible_password=admin123
 
 [datacenter]
