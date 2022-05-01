@@ -22,7 +22,7 @@ __metaclass__ = type
 
 DOCUMENTATION = """
 ---
-name: ansible_httpapi_restconf_root
+name: sfss
 short_description: HttpApi Plugin for devices supporting Restconf SFSS
 description:
   - This HttpApi plugin provides methods to connect to Restconf SFSS
