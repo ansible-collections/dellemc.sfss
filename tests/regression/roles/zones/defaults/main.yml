@@ -24,7 +24,7 @@ tests:
       group_name: "{{ zone_group1 }}"
       members:
         data:
-          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+          - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000@2.2.2.2:V4::0:0:TCP
             id_type: fqn
             role: host
   - name: test_case_02
@@ -48,7 +48,7 @@ tests1:
       group_name: "{{ zone_group1 }}"
       members:
         data:
-          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+          - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000@2.2.2.2:V4::0:0:TCP
             id_type: fqn
             role: host
   - name: test_case_02
@@ -71,13 +71,13 @@ tests1:
       group_name: "{{ zone_group1 }}"
       members:
         data:
-          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+          - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000@2.2.2.2:V4::0:0:TCP
             id_type: fqn
             role: host
-          - id: ansible2.nqn.2014-08.org.nvmexpress:uuid:host
-            id_type: fqn
+          - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000
+            id_type: nqn
             role: subsystem
-          - id: ansible3.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+          - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000@5.5.5.5:V4::0:0:TCP
             id_type: fqn
             role: host                  
 
@@ -90,11 +90,11 @@ tests1:
       group_name: "{{ zone_group2 }}"
       members:
         data:      
-          - id: ansible4.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+          - id: ansible4.tcp.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP
             id_type: fqn
             role: host
           - id: ansible5.nqn.2014-08.org.nvmexpress:uuid:host
-            id_type: fqn
+            id_type: nqn
             role: subsystem
 
   - name: test_case_05
@@ -106,11 +106,11 @@ tests1:
       group_name: "{{ zone_group1 }}"
       members:
         data:
-          - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+          - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000@2.2.2.2:V4::0:0:TCP
             id_type: fqn
             role: host
           - id: ansible2.nqn.2014-08.org.nvmexpress:uuid:host
-            id_type: fqn
+            id_type: nqn
             role: subsystem
 
   - name: test_case_06

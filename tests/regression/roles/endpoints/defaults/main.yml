@@ -83,6 +83,19 @@ tests_subsystems:
           transport_address: 4::1
           transport_address_family: ipv6
           transport_type: tcp
+        - type: subsystem
+          instance_id: 1
+          nqn_id: ansible1.2014-08.org.nvmexpress:uuid:subsystem
+          transport_address: 6::1
+          transport_address_family: ipv6
+          transport_type: tcp
+          transport_service_id: 650
+        - type: subsystem
+          instance_id: 1
+          nqn_id: ansible1.2014-08.org.nvmexpress:uuid:subsystem
+          transport_address: 6::1
+          transport_address_family: ipv6
+          transport_type: tcp
 
   - name: test_case_04
     description: deleted Endpoint Subsystem

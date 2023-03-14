@@ -15,7 +15,7 @@ tests:
           - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
             type: 'nqn'
             role: 'subsystem'
-          - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+          - id: "nqn1.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
             type: 'fqn'
             role: 'host'
     - name: zone_alais2
@@ -27,7 +27,7 @@ tests:
           - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
             type: 'nqn'
             role: 'subsystem'
-          - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+          - id: "nqn1.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
             type: 'fqn'
             role: 'host'      
     - name: zone_alais4
@@ -40,7 +40,7 @@ tests:
       instance_id: 1
       members:
         data: 
-          - id: "nqn2.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+          - id: "nqn2.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
             type: 'fqn'
             role: 'host'
           - id: "nqn3.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
@@ -50,7 +50,7 @@ tests:
       instance_id: 1
       members:
         data: 
-          - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+          - id: "nqn1.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
             type: 'fqn'
             role: 'host'      
           - id: "nqn2.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
@@ -65,7 +65,7 @@ tests:
       instance_id: 1
       members:
         data: 
-          - id: "nqn2.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+          - id: "nqn2.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
             type: 'fqn'
             role: 'host'
               

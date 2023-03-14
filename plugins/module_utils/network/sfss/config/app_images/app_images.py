@@ -57,7 +57,7 @@ class App_images(StfsConfigBase):
         ret_commands = []
         if commands:
             for app_image in commands:
-                if "1.1.0" in app_image.get('image_id'):
+                if "1.2.0" in app_image.get('image_id'):
                     continue
                 ret_requests.append(self.build_delete_request(app_image))
                 ret_commands.append(app_image)

@@ -12,11 +12,11 @@
             group_name: reg.zone_group1
             members:
               data:
-                - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+                - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000@2.2.2.2:V4::0:0:TCP
                   id_type: fqn
                   role: host
-                - id: ansible2.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
-                  id_type: fqn
+                - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000
+                  id_type: nqn
                   role: subsystem
     
     - name: SFSS zones delete
@@ -27,7 +27,7 @@
             group_name: reg.zone_group1
             members:
               data:
-                - id: ansible1.tcp.2014-08.org.nvmexpress:uuid:host@102.102.103.104:0:TCP
+                - id: nqn.2014-08.org.nvmexpress:uuid:00000000-0000-1111-0002-00000000000@2.2.2.2:V4::0:0:TCP
                   id_type: fqn
                   role: host
         state: deleted
