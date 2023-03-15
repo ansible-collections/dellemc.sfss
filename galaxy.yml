@@ -1,6 +1,6 @@
 namespace: dellemc
 name: sfss
-version: 1.2.0
+version: 1.2.1
 readme: README.md
 authors:
 - Mohamed Javeed <mohamed_javeed_faroo@Dell.com>

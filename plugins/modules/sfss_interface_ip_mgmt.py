@@ -76,6 +76,7 @@ options:
         choices:
         - manual
         - automatic
+        - disabled
       ipv6_address:
         description:
           - IPv6 address of the subinterface.
@@ -96,10 +97,63 @@ options:
         choices:
         - manual
         - automatic
+        - disabled
       name:
         description:
           - Name of the Interface.
         type: str
+      ipv4_routes:
+        description:
+          - List of IPV4 routes
+        type: list
+        elements: dict
+        suboptions:
+          destination:
+            description:
+              - IP Route Destination Address
+            type: str
+            required: True
+          destination_prefix:
+            description:
+              - IP Route Destination Prefix
+            type: int
+            required: True
+          next_hop:
+            description:
+              - IPv4 next hop
+            type: str
+            required: True
+          metric:
+            description:
+              - IP route metric
+            type: int
+            default: 1
+      ipv6_routes:
+        description:
+          - List of IPV6 routes
+        type: list
+        elements: dict
+        suboptions:
+          destination:
+            description:
+              - IP Route Destination Address
+            type: str
+            required: True
+          destination_prefix:
+            description:
+              - IP Route Destination Prefix
+            type: int
+            required: True
+          next_hop:
+            description:
+              - IPv6 next hop
+            type: str
+            required: True
+          metric:
+            description:
+              - IP route metric
+            type: int
+            default: 1
   state:
     description:
       - The state the configuration should be left in.
