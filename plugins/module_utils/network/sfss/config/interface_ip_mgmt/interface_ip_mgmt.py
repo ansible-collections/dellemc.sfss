@@ -138,21 +138,21 @@ class Interface_ip_mgmt(StfsConfigBase):
             ip_route = []
             for route in data.get("ipv4_routes"):
                 route_dict = {"Destination": route['destination'],
-                               "DestinationPrefix": route['destination_prefix'],
-                               "Metric": route.get('metric'),
-                               "NextHop": route['next_hop']}
+                              "DestinationPrefix": route['destination_prefix'],
+                              "Metric": route.get('metric'),
+                              "NextHop": route['next_hop']}
                 ip_route.append(route_dict)
-            payload.update({"IPV4Route" : ip_route})
+            payload.update({"IPV4Route": ip_route})
 
         if ipv6_config_type == "MANUAL" and data.get("ipv6_routes"):
             ip_route = []
             for route in data.get("ipv6_routes"):
                 route_dict = {"Destination": route['destination'],
-                               "DestinationPrefix": route['destination_prefix'],
-                               "Metric": route.get('metric'),
-                               "NextHop": route['next_hop']}
+                              "DestinationPrefix": route['destination_prefix'],
+                              "Metric": route.get('metric'),
+                              "NextHop": route['next_hop']}
                 ip_route.append(route_dict)
-            payload.update({"IPV6Route" : ip_route})
+            payload.update({"IPV6Route": ip_route})
 
         request = {"method": method,
                    "path": url,
