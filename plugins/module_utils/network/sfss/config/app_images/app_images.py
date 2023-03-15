@@ -16,16 +16,9 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.config.b
     StfsConfigBase,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    to_list,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     APP_IMAGES_BASE_URL,
     APP_IMAGES_UPDATE_URL,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
-    zone_group_id,
 )
 
 
@@ -57,7 +50,7 @@ class App_images(StfsConfigBase):
         ret_commands = []
         if commands:
             for app_image in commands:
-                if "1.1.0" in app_image.get('image_id'):
+                if "1.2.0" in app_image.get('image_id'):
                     continue
                 ret_requests.append(self.build_delete_request(app_image))
                 ret_commands.append(app_image)

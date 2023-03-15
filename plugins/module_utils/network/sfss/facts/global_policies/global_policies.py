@@ -11,20 +11,13 @@ based on the configuration.
 """
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-import re
-from copy import deepcopy
 
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common import (
-    utils,
-)
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.argspec.global_policies.global_policies import Global_policiesArgs
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.base.sfss_facts_base import (
     StfsFactsBase,
 )
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     send_requests,
-    get_instances,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
     transform_cdc_state,
@@ -32,7 +25,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constant
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     GLOBAL_POLICIES_URL,
 )
-from ansible.module_utils.connection import ConnectionError
 GET = "get"
 
 

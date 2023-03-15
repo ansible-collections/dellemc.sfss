@@ -19,22 +19,22 @@
           instance_id: 1
           members:
             data: 
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:0000:host"
                 type: 'nqn'
                 role: 'subsystem'
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.2.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:0001:host"
                 type: 'nqn'
                 role: 'subsystem'
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:2.1.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
                 type: 'fqn'
                 role: 'subsystem'
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.3.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host@2.2.2.1:V4::0:0:TCP"
                 type: 'fqn'
                 role: 'host'
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host@2.2.2.3:V4::0:0:TCP"
                 type: 'fqn'
                 role: 'host'
-              - id: "nqn1.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:4.3.1.1:3002"
+              - id: "nqn1.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
                 type: 'fqn'
                 role: 'host'                
     - name: SFSS zones alias delete
@@ -44,13 +44,13 @@
           instance_id: 1
           members:
             data: 
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host@2.2.2.2:V4::0:0:TCP"
                 type: 'nqn'
                 role: 'subsystem'
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.2.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host@3.3.3.3:V4::0:0:TCP"
                 type: 'nqn'
                 role: 'subsystem'
-              - id: "nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:2.1.1.1:3002"
+              - id: "nqn.2014-08.org.nvmexpress:uuid:host@4.4.4.4:V4::0:0:TCP"
                 type: 'fqn'
                 role: 'subsystem'
         state: deleted

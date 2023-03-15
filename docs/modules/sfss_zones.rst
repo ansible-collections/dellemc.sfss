@@ -376,15 +376,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['ZoneName: ansible_zone1', 'numberZoneMembers: 0', 'zoneId: config:AutoZonegroupnew:nqn.1988-11.com.dell:SFSS:1:20230314033523e8:ansible_zone1'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['ZoneName: ansible_zone1', 'numberZoneMembers: 0', 'zoneId: config:AutoZonegroupnew:nqn.1988-11.com.dell:SFSS:1:20230314033523e8:ansible_zone1'])
   The resulting configuration model invocation.
 
 

@@ -22,13 +22,9 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constant
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     send_requests,
-    get_instances,
 )
-from ansible.module_utils.connection import ConnectionError
 
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
-    transform_end_point_name_type,
-    transform_end_point_type,
     retransform_end_point_name_type,
 )
 

@@ -11,13 +11,10 @@ based on the configuration.
 """
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-import re
-from copy import deepcopy
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.argspec.backup_restore.backup_restore import Backup_restoreArgs
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.base.sfss_facts_base import (
     StfsFactsBase,
 )
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     send_requests,
     get_instances,
@@ -26,7 +23,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constant
     BACKUP_URL,
     RESTORE_URL
 )
-from ansible.module_utils.connection import ConnectionError
 
 GET = "get"
 

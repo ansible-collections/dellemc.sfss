@@ -46,7 +46,7 @@ class Endpoints(StfsConfigBase):
         super(Endpoints, self).__init__(module)
         self.resource_name = "endpoints"
         self.test_keys = [{'config': {'type': '', 'instance_id': '', 'nqn_id': '', 'port_id': '',
-                           'transport_address': '', 'transport_address_family': '', 'transport_type': ''}}]
+                           'transport_address': '', 'transport_address_family': '', 'transport_type': '', 'transport_service_id': ''}}]
 
     # Port id of DDC is defaults to 8009 in Rest API.
     # This is reason for
@@ -108,6 +108,7 @@ class Endpoints(StfsConfigBase):
     def resource_id(self, endpoint):
         nqn_id = ""
         port = 0
+        transport_srv_id = ""
         ip = endpoint.get('transport_address')
         if endpoint.get('nqn_id'):
             nqn_id = endpoint.get('nqn_id')
@@ -115,8 +116,10 @@ class Endpoints(StfsConfigBase):
             port = endpoint.get('port_id')
         transport_type = endpoint.get('transport_type').upper()
         transport_addr_family = endpoint.get('transport_address_family')
+        if endpoint.get('transport_service_id'):
+            transport_srv_id = endpoint.get('transport_service_id')
 
-        ret = get_endpoint_id(nqn_id=nqn_id, ip=ip, ip_type=transport_addr_family, transport_service_id="",
+        ret = get_endpoint_id(nqn_id=nqn_id, ip=ip, ip_type=transport_addr_family, transport_service_id=transport_srv_id,
                               port_id=port, transport_type=transport_type)
 
         return ret

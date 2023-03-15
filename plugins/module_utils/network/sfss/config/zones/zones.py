@@ -16,10 +16,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.config.b
     StfsConfigBase,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    to_list,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     ZONE_GRP_CREATE_URL,
     ZONE_CREATE_URL,

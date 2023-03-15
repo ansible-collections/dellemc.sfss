@@ -256,17 +256,15 @@ RETURN = """
 before:
   description: The configuration prior to the model invocation.
   returned: always
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Status: Failure', 'ID: df3fef09-c7e6-4d0f-a0f0-d71dc6363e5a']
   type: list
+
 after:
   description: The resulting configuration model invocation.
   returned: when changed
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Status: Failure', 'ID: df3fef09-c7e6-4d0f-a0f0-d71dc6363e5a']
   type: list
+
 commands:
   description: The set of commands pushed to the remote device.
   returned: always

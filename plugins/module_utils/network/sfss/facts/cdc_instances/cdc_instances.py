@@ -12,11 +12,9 @@ based on the configuration.
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.argspec.cdc_instances.cdc_instances import Cdc_instancesArgs
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.argspec.zone_alias.zone_alias import Zone_aliasArgs
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.base.sfss_facts_base import (
     StfsFactsBase,
 )
-from ansible.module_utils.connection import ConnectionError
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     CDC_SPECIFIC_INSTANCE_URL,
 )
@@ -25,7 +23,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constant
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     send_requests,
-    get_instances,
 )
 GET = "get"
 

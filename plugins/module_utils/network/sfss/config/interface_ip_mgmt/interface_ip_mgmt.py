@@ -16,13 +16,9 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.config.b
     StfsConfigBase,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     INF_IP_MGMT_BASE_URL,
     INF_IP_MGMT_UPDATE_URL,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
-    zone_group_id,
 )
 
 

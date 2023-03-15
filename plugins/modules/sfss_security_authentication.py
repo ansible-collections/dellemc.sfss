@@ -297,17 +297,15 @@ RETURN = """
 before:
   description: The configuration prior to the model invocation.
   returned: always
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['ServerIp: 2.3.4.5', 'ServerPass: +05QvIgOaO5zsQ6kY4o6/SL3xBk4Wif81ZpONVPqUSiPIl86qrvqkQPwmlNnRdu1']
   type: list
+
 after:
   description: The resulting configuration model invocation.
   returned: when changed
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['ServerIp: 2.3.4.5', 'ServerPass: +05QvIgOaO5zsQ6kY4o6/SL3xBk4Wif81ZpONVPqUSiPIl86qrvqkQPwmlNnRdu1']
   type: list
+
 commands:
   description: The set of commands pushed to the remote device.
   returned: always

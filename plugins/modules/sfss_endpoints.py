@@ -84,6 +84,7 @@ options:
         description:
           - Transport port ID.
         type: int
+        default: 0
       nqn_id:
         description:
           - NQN ID.
@@ -310,17 +311,15 @@ RETURN = """
 before:
   description: The configuration prior to the model invocation.
   returned: always
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['EId:@<3::1>:3454:TCP', 'TransportAddress:3::1', 'TransportAddressFamily:IPV6', 'PortId:3454']
   type: list
+
 after:
   description: The resulting configuration model invocation.
   returned: when changed
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['EId:@<3::1>:3454:TCP', 'TransportAddress:3::1', 'TransportAddressFamily:IPV6', 'PortId:3454']
   type: list
+
 commands:
   description: The set of commands pushed to the remote device.
   returned: always

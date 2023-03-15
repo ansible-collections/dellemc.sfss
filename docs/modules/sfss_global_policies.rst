@@ -120,15 +120,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['ZoningPolicy: Disable', 'NameServerEntityPurgeTOV: 8Hr'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['ZoningPolicy: Disable', 'NameServerEntityPurgeTOV: 8Hr'])
   The resulting configuration model invocation.
 
 

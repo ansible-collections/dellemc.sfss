@@ -241,15 +241,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['Status: Failure', 'ID: df3fef09-c7e6-4d0f-a0f0-d71dc6363e5a'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['Status: Failure', 'ID: df3fef09-c7e6-4d0f-a0f0-d71dc6363e5a'])
   The resulting configuration model invocation.
 
 

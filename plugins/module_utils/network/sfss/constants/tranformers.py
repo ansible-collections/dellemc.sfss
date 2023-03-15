@@ -116,7 +116,9 @@ def retransform_zone_group_active_state(type):
     return ret
 
 
-def get_endpoint_id(nqn_id, ip, ip_type, transport_service_id=0, port_id=0, transport_type='TCP'):
+def get_endpoint_id(nqn_id, ip, ip_type, transport_service_id="", port_id=0, transport_type='TCP'):
+    if transport_service_id != "":
+        transport_service_id = int(transport_service_id)
     ip_type_id = 'V4'
     if ip_type == "ipv6":
         ip = "<{ip}>".format(ip=ip)

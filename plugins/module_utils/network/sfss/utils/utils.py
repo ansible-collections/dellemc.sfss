@@ -16,12 +16,7 @@ __metaclass__ = type
 
 from ansible.module_utils.six import iteritems
 from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    is_masklen,
-    to_netmask,
     remove_empties
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
-    zone_group_id,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.sfss import (
     to_request,
@@ -293,22 +288,22 @@ def dict_to_set(sample_dict):
     return return_set
 
 
-def validate_ipv4(value, module):
-    if value:
-        address = value.split("/")
-        if len(address) != 2:
-            module.fail_json(
-                msg="address format is <ipv4 address>/<mask>, got invalid format {0}".format(
-                    value
-                )
-            )
+# def validate_ipv4(value, module):
+#     if value:
+#         address = value.split("/")
+#         if len(address) != 2:
+#             module.fail_json(
+#                 msg="address format is <ipv4 address>/<mask>, got invalid format {0}".format(
+#                     value
+#                 )
+#             )
 
-        if not is_masklen(address[1]):
-            module.fail_json(
-                msg="invalid value for mask: {0}, mask should be in range 0-32".format(
-                    address[1]
-                )
-            )
+#         if not is_masklen(address[1]):
+#             module.fail_json(
+#                 msg="invalid value for mask: {0}, mask should be in range 0-32".format(
+#                     address[1]
+#                 )
+#             )
 
 
 def validate_ipv6(value, module):
@@ -329,17 +324,17 @@ def validate_ipv6(value, module):
                 )
 
 
-def validate_n_expand_ipv4(module, want):
-    # Check if input IPV4 is valid IP and expand IPV4 with its subnet mask
-    ip_addr_want = want.get("address")
-    if len(ip_addr_want.split(" ")) > 1:
-        return ip_addr_want
-    validate_ipv4(ip_addr_want, module)
-    ip = ip_addr_want.split("/")
-    if len(ip) == 2:
-        ip_addr_want = "{0} {1}".format(ip[0], to_netmask(ip[1]))
+# def validate_n_expand_ipv4(module, want):
+#     # Check if input IPV4 is valid IP and expand IPV4 with its subnet mask
+#     ip_addr_want = want.get("address")
+#     if len(ip_addr_want.split(" ")) > 1:
+#         return ip_addr_want
+#     validate_ipv4(ip_addr_want, module)
+#     ip = ip_addr_want.split("/")
+#     if len(ip) == 2:
+#         ip_addr_want = "{0} {1}".format(ip[0], to_netmask(ip[1]))
 
-    return ip_addr_want
+#     return ip_addr_want
 
 
 def netmask_to_cidr(netmask):

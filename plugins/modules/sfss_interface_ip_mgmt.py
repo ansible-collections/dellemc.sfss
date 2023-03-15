@@ -849,17 +849,15 @@ RETURN = """
 before:
   description: The configuration prior to the model invocation.
   returned: always
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Interface: ens192.64', 'Type: VLAN', 'IPV4Config: AUTOMATIC', 'IPV6Config: AUTOMATIC', 'ParentInterface: ens192', 'VlanId: 64']
   type: list
+
 after:
   description: The resulting configuration model invocation.
   returned: when changed
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Interface: ens192.64', 'Type: VLAN', 'IPV4Config: AUTOMATIC', 'IPV6Config: AUTOMATIC', 'ParentInterface: ens192', 'VlanId: 64']
   type: list
+
 commands:
   description: The set of commands pushed to the remote device.
   returned: always

@@ -9,7 +9,6 @@ from ansible_collections.ansible.netcommon.plugins.module_utils.network.common i
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     get_instances,
 )
-from ansible.module_utils.connection import ConnectionError
 
 
 class StfsFactsBase(object):

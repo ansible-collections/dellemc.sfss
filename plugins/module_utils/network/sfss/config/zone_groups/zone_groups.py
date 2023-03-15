@@ -16,10 +16,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.config.b
     StfsConfigBase,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    to_list,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     ZONE_GRP_CREATE_URL,
     ZONE_GRP_UPDATE_URL,
@@ -27,8 +23,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constant
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
     transform_zone_group_active_state,
     zone_group_id,
-    transform_zone_member_type,
-    transform_end_point_type,
     get_orginate_nqn_by_instance,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (

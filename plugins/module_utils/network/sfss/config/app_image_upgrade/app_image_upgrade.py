@@ -19,10 +19,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.config.b
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     SFSS_APP_GET,
 )
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    to_list,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 
 
 class App_image_upgrade(StfsConfigBase):

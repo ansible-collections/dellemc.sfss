@@ -252,15 +252,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['StatusMessage: Added during initializing', 'Status: Success', 'Version: 1.0.0'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['StatusMessage: Added during initializing', 'Status: Success', 'Version: 1.0.0'])
   The resulting configuration model invocation.
 
 

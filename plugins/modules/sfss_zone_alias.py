@@ -393,17 +393,15 @@ RETURN = """
 before:
   description: The configuration prior to the model invocation.
   returned: always
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Role: Host', 'ZoneMemberType: NQN', 'ZoneAliasMemberId: config:zone_alais3:nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002']
   type: list
+
 after:
   description: The resulting configuration model invocation.
   returned: when changed
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Role: Host', 'ZoneMemberType: NQN', 'ZoneAliasMemberId: config:zone_alais3:nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002']
   type: list
+
 commands:
   description: The set of commands pushed to the remote device.
   returned: always

@@ -396,17 +396,15 @@ RETURN = """
 before:
   description: The configuration prior to the model invocation.
   returned: always
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['ZoneName: ansible_zone1', 'numberZoneMembers: 0', 'zoneId: config:AutoZonegroupnew:nqn.1988-11.com.dell:SFSS:1:20230314033523e8:ansible_zone1']
   type: list
+
 after:
   description: The resulting configuration model invocation.
   returned: when changed
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['ZoneName: ansible_zone1', 'numberZoneMembers: 0', 'zoneId: config:AutoZonegroupnew:nqn.1988-11.com.dell:SFSS:1:20230314033523e8:ansible_zone1']
   type: list
+
 commands:
   description: The set of commands pushed to the remote device.
   returned: always

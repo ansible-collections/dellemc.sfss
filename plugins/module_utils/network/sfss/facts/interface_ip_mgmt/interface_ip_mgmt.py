@@ -16,15 +16,11 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.de
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     INF_IP_MGMT_URL,
 )
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
-    transform_cdc_state,
-)
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.base.sfss_facts_base import (
     StfsFactsBase,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     send_requests,
-    get_instances,
 )
 
 GET = "get"
