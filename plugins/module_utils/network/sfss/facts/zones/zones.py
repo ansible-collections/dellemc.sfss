@@ -11,9 +11,6 @@ based on the configuration.
 """
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-from os import write
-import re
-from copy import deepcopy
 
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.argspec.zones.zones import ZonesArgs
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.base.sfss_facts_base import (

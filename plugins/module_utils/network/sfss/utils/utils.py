@@ -18,9 +18,6 @@ from ansible.module_utils.six import iteritems
 from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
     remove_empties
 )
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
-    zone_group_id,
-)
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.sfss import (
     to_request,
     edit_config

@@ -11,12 +11,7 @@ based on the configuration.
 """
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-import re
-from copy import deepcopy
 
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common import (
-    utils,
-)
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.argspec.security_authentication.security_authentication import (
     Security_authenticationArgs,
 )
@@ -27,7 +22,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.sfss imp
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.base.sfss_facts_base import (
     StfsFactsBase,
 )
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     AUTHENTICATION_SEQUENCE_URL,
     TACACSSERVERS_URL,

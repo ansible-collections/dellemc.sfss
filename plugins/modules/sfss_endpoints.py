@@ -84,6 +84,7 @@ options:
         description:
           - Transport port ID.
         type: int
+        default: 0
       nqn_id:
         description:
           - NQN ID.

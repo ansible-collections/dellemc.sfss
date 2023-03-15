@@ -21,9 +21,7 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constant
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     send_requests,
-    get_instances,
 )
-from ansible.module_utils.connection import ConnectionError
 
 GET = "get"
 

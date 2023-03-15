@@ -12,21 +12,10 @@ created
 """
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.cfg.base import (
-    ConfigBase,
-)
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    to_list,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.config.base.sfss_config_base import (
     StfsConfigBase,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    to_list,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     ZA_CONFIG_URL,
     ZA_MEMBER_CONFIG_URL,

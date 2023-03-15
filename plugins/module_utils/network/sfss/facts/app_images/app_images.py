@@ -21,7 +21,6 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.ba
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.utils import (
     send_requests,
-    get_instances,
 )
 
 GET = "get"

@@ -16,16 +16,9 @@ from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.config.b
     StfsConfigBase,
 )
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.utils.debug import debug
-from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import (
-    to_list,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.facts.facts import Facts
 from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.urls import (
     APP_IMAGES_BASE_URL,
     APP_IMAGES_UPDATE_URL,
-)
-from ansible_collections.dellemc.sfss.plugins.module_utils.network.sfss.constants.tranformers import (
-    zone_group_id,
 )
 
 
