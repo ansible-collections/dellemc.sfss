@@ -2,7 +2,7 @@
 ansible_connection: httpapi
 module_name: interface_ip_mgmt
 
-tests: "{{ tests_vlans + tests_physical_inf}}"
+tests: "{{ tests_vlans + test_inf_static_routes + tests_physical_inf }}"
 
 tests_vlans:
   - name: test_case_01
@@ -72,8 +72,19 @@ tests_vlans:
       parent_interface: ens192
       vlan_id: 51
       name: vlan interface
-
+  
   - name: test_case_06
+    description: Sfss ip interface create with disabled config type
+    state: merged
+    input:
+    - ipv4_config_type: disabled
+      ipv6_config_type: disabled
+      parent_interface: ens192
+      vlan_id: 60
+      name: vlan interface
+
+
+  - name: test_case_07
     description: Sfss ip interface delete one vlan interface
     state: deleted
     input:
@@ -88,14 +99,91 @@ tests_vlans:
       parent_interface: ens192
       vlan_id: 64
 
-  - name: test_case_07
+  - name: test_case_08
     description: Sfss ip interface delete all the vlan interfaces
     state: deleted
     input: []
 
+test_inf_static_routes:
+  - name: test_case_09
+    description: Sfss ip vlan interface create with routes
+    state: merged
+    input:
+    - ipv4_address: 10.10.10.10
+      ipv4_config_type: manual
+      ipv4_gateway: 10.1.1.254
+      ipv4_netmask: 16
+      ipv4_routes:
+      - destination: 3.3.3.3
+        destination_prefix: 16
+        next_hop: 5.5.5.5
+        metric: 32
+      - destination: 1.1.1.1
+        destination_prefix: 16
+        next_hop: 6.6.6.6
+        metric: 25
+      ipv6_address: fe52::1699:6f07:43df:56c3
+      ipv6_config_type: manual
+      ipv6_gateway: fe52::1699:6f07:43df:ffff
+      ipv6_netmask: 64
+      ipv6_routes:
+      - destination: 1::2
+        destination_prefix: 16
+        next_hop: 3::3
+        metric: 32
+      parent_interface: ens225
+      vlan_id: 51
+      name: vlan interface
+  
+  - name: test_case_10
+    description: Sfss ip vlan interface edit the created routes
+    state: merged
+    input:
+    - ipv4_address: 10.10.10.10
+      ipv4_config_type: manual
+      ipv4_gateway: 10.1.1.254
+      ipv4_netmask: 16
+      ipv4_routes:
+      - destination: 3.3.4.5
+        destination_prefix: 16
+        next_hop: 5.5.5.6
+      - destination: 1.1.1.1
+        destination_prefix: 16
+        next_hop: 6.6.6.6
+      ipv6_address: fe52::1699:6f07:43df:56c3
+      ipv6_config_type: manual
+      ipv6_gateway: fe52::1699:6f07:43df:ffff
+      ipv6_netmask: 64
+      ipv6_routes:
+      - destination: 1::2
+        destination_prefix: 16
+        next_hop: 3::3
+        metric: 32
+      parent_interface: ens225
+      vlan_id: 51
+      name: vlan interface
+  
+  - name: test_case_11
+    description: Sfss ip vlan interface delete the created routes
+    state: merged
+    input:
+    - ipv4_address: 10.10.10.10
+      ipv4_config_type: manual
+      ipv4_gateway: 10.1.1.254
+      ipv4_netmask: 16
+      ipv4_routes:
+      ipv6_address: fe52::1699:6f07:43df:56c3
+      ipv6_config_type: manual
+      ipv6_gateway: fe52::1699:6f07:43df:ffff
+      ipv6_netmask: 64
+      ipv6_routes:
+      parent_interface: ens225
+      vlan_id: 51
+      name: vlan interface
+
 tests_physical_inf:  
 
-  - name: test_case_08
+  - name: test_case_12
     description: update Interface IP management
     state: merged
     input:
@@ -109,7 +197,7 @@ tests_physical_inf:
       ipv6_netmask: 64
       parent_interface: ens192  
 
-  - name: test_case_09
+  - name: test_case_13
     description: Update Interface IP management
     state: merged
     input:
@@ -120,7 +208,7 @@ tests_physical_inf:
       ipv6_config_type: automatic
       parent_interface: ens192
 
-  - name: test_case_10
+  - name: test_case_14
     description: Update Interface IP management
     state: merged
     input:

@@ -70,6 +70,48 @@ Parameters
       Name of the Interface.
 
 
+    ipv4_routes (optional, list, None)
+      List of IPV4 routes
+
+
+      destination (True, str, None)
+        IP Route Destination Address
+
+
+      destination_prefix (True, int, None)
+        IP Route Destination Prefix
+
+
+      next_hop (True, str, None)
+        IPv4 next hop
+
+
+      metric (optional, int, 1)
+        IP route metric
+
+
+
+    ipv6_routes (optional, list, None)
+      List of IPV6 routes
+
+
+      destination (True, str, None)
+        IP Route Destination Address
+
+
+      destination_prefix (True, int, None)
+        IP Route Destination Prefix
+
+
+      next_hop (True, str, None)
+        IPv6 next hop
+
+
+      metric (optional, int, 1)
+        IP route metric
+
+
+
 
   state (optional, str, merged)
     The state the configuration should be left in.

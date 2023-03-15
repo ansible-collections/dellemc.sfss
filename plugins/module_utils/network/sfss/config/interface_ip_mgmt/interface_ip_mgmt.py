@@ -45,7 +45,7 @@ class Interface_ip_mgmt(StfsConfigBase):
         self.test_keys = [{'config': {'ipv4_address': '', 'ipv4_config_type': '', 'ipv4_gateway': '',
                                       'ipv4_netmask': '', 'ipv6_address': '', 'ipv6_config_type': '',
                                       'ipv6_gateway': '', 'ipv6_netmask': '', 'parent_interface': '',
-                                      'vlan_id': '', 'name': ''}}]
+                                      'vlan_id': '', 'name': '', 'ipv4_routes': '', 'ipv6_routes': ''}}]
 
     def resource_id(self, data):
         parent_interface = data.get('parent_interface')
@@ -134,27 +134,25 @@ class Interface_ip_mgmt(StfsConfigBase):
                             "IPV6Gateway": ipv6_gateway,
                             "IPV6PrefixLength": ipv6_netmask})
 
-        # if vlan_id and ipv4_config_type == "MANUAL" and data.get("ipv4_routes"):
-        #     ip_route = []
-        #     for route in data.get("ipv4_routes"):
-        #         route_dict = { "Destination" : route['destination'],
-        #                        "DestinationPrefix" : route['destination_prefix'],
-        #                        "Metric" : route['metric'],
-        #                        "NextHop" : route['next_hop']
-        #                     }
-        #         ip_route.append(route_dict)
-        #     payload.update({"IPV4Route" : ip_route})
+        if ipv4_config_type == "MANUAL" and data.get("ipv4_routes"):
+            ip_route = []
+            for route in data.get("ipv4_routes"):
+                route_dict = {"Destination": route['destination'],
+                              "DestinationPrefix": route['destination_prefix'],
+                              "Metric": route.get('metric'),
+                              "NextHop": route['next_hop']}
+                ip_route.append(route_dict)
+            payload.update({"IPV4Route": ip_route})
 
-        # if vlan_id and ipv6_config_type == "MANUAL" and data.get("ipv6_routes"):
-        #     ip_route = []
-        #     for route in data.get("ipv6_routes"):
-        #         route_dict = { "Destination" : route['destination'],
-        #                        "DestinationPrefix" : route['destination_prefix'],
-        #                        "Metric" : route['metric'],
-        #                        "NextHop" : route['next_hop']
-        #                     }
-        #         ip_route.append(route_dict)
-        #     payload.update({"IPV6Route" : ip_route})
+        if ipv6_config_type == "MANUAL" and data.get("ipv6_routes"):
+            ip_route = []
+            for route in data.get("ipv6_routes"):
+                route_dict = {"Destination": route['destination'],
+                              "DestinationPrefix": route['destination_prefix'],
+                              "Metric": route.get('metric'),
+                              "NextHop": route['next_hop']}
+                ip_route.append(route_dict)
+            payload.update({"IPV6Route": ip_route})
 
         request = {"method": method,
                    "path": url,
