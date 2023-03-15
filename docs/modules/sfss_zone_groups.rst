@@ -371,15 +371,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['Type: Manual', 'ZoneDBType: config', 'ActivateStatus: DeActivate', 'zoneGroupName: ansible.zone_grp1'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['Type: Manual', 'ZoneDBType: config', 'ActivateStatus: DeActivate', 'zoneGroupName: ansible.zone_grp1'])
   The resulting configuration model invocation.
 
 

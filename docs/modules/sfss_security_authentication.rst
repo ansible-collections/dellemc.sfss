@@ -285,15 +285,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['ServerIp: 2.3.4.5', 'ServerPass: +05QvIgOaO5zsQ6kY4o6/SL3xBk4Wif81ZpONVPqUSiPIl86qrvqkQPwmlNnRdu1'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['ServerIp: 2.3.4.5', 'ServerPass: +05QvIgOaO5zsQ6kY4o6/SL3xBk4Wif81ZpONVPqUSiPIl86qrvqkQPwmlNnRdu1'])
   The resulting configuration model invocation.
 
 

@@ -834,15 +834,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['Interface: ens192.64', 'Type: VLAN', 'IPV4Config: AUTOMATIC', 'IPV6Config: AUTOMATIC', 'ParentInterface: ens192', 'VlanId: 64'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['Interface: ens192.64', 'Type: VLAN', 'IPV4Config: AUTOMATIC', 'IPV6Config: AUTOMATIC', 'ParentInterface: ens192', 'VlanId: 64'])
   The resulting configuration model invocation.
 
 

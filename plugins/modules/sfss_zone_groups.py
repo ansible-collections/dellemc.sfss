@@ -379,17 +379,13 @@ RETURN = """
 before:
   description: The configuration prior to the model invocation.
   returned: always
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Type: Manual', 'ZoneDBType: config', 'ActivateStatus: DeActivate', 'zoneGroupName: ansible.zone_grp1']
   type: list
 
 after:
   description: The resulting configuration model invocation.
   returned: when changed
-  sample: >
-    The configuration returned will always be in the same format
-     of the parameters above.
+  sample: ['Type: Manual', 'ZoneDBType: config', 'ActivateStatus: DeActivate', 'zoneGroupName: ansible.zone_grp1']
   type: list
 
 commands:

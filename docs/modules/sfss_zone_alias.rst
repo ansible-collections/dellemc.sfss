@@ -377,15 +377,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+before (always, list, ['Role: Host', 'ZoneMemberType: NQN', 'ZoneAliasMemberId: config:zone_alais3:nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
+after (when changed, list, ['Role: Host', 'ZoneMemberType: NQN', 'ZoneAliasMemberId: config:zone_alais3:nqn.2014-08.org.nvmexpress:uuid:host:TCP:Ipv4:1.1.1.1:3002'])
   The resulting configuration model invocation.
 
 
