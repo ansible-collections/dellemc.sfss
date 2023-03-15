@@ -50,7 +50,7 @@ Parameters
       Transport service ID.
 
 
-    port_id (optional, int, None)
+    port_id (optional, int, 0)
       Transport port ID.
 
 
@@ -295,17 +295,11 @@ Examples
 Return Values
 -------------
 
-before (always, list, The configuration returned will always be in the same format
- of the parameters above.
-)
-
+before (always, list, ['EId:@<3::1>:3454:TCP', 'TransportAddress:3::1', 'TransportAddressFamily:IPV6', 'PortId:3454'])
   The configuration prior to the model invocation.
 
 
-after (when changed, list, The configuration returned will always be in the same format
- of the parameters above.
-)
-
+after (when changed, list, ['EId:@<3::1>:3454:TCP', 'TransportAddress:3::1', 'TransportAddressFamily:IPV6', 'PortId:3454'])
   The resulting configuration model invocation.
 
 
