@@ -374,12 +374,14 @@ Return Values
 before (always, list, The configuration returned will always be in the same format
  of the parameters above.
 )
+
   The configuration prior to the model invocation.
 
 
 after (when changed, list, The configuration returned will always be in the same format
  of the parameters above.
 )
+
   The resulting configuration model invocation.
 
 
