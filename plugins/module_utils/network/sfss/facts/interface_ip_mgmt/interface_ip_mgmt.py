@@ -94,8 +94,8 @@ class Interface_ip_mgmtFacts(StfsFactsBase):
             ip_route = []
             for route in data.get("IPV4Route"):
                 route_dict = {"destination": route['Destination'],
-                              "destination_prefix": route['DestinationPrefix'],
-                              "metric": route['Metric'],
+                              "destination_prefix": int(route['DestinationPrefix']),
+                              "metric": int(route['Metric']),
                               "next_hop": route['NextHop']}
                 ip_route.append(route_dict)
 
@@ -107,8 +107,8 @@ class Interface_ip_mgmtFacts(StfsFactsBase):
             ip_route = []
             for route in data.get("IPV6Route"):
                 route_dict = {"destination": route['Destination'],
-                              "destination_prefix": route['DestinationPrefix'],
-                              "metric": route['Metric'],
+                              "destination_prefix": int(route['DestinationPrefix']),
+                              "metric": int(route['Metric']),
                               "next_hop": route['NextHop']}
                 ip_route.append(route_dict)
 
