@@ -63,7 +63,7 @@ class Zone_groupsFacts(StfsFactsBase):
         for response in responses:
             if response and response[1].get(ZONE_GROUPS):
                 for zone_group in response[1][ZONE_GROUPS]:
-                    name = zone_group.get('ZoneGroupName')
+                    name = zone_group.get('zoneGroupName')
                     activate_state_str = zone_group.get('ActivateStatus')
                     active_state = retransform_zone_group_active_state(activate_state_str)
                     activation_state = zone_group.get('ActivationState')

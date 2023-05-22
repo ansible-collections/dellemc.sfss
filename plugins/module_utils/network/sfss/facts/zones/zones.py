@@ -70,7 +70,7 @@ class ZonesFacts(StfsFactsBase):
         for response in responses:
             if response and response[1].get(ZONE_GROUPS):
                 for zone_group in response[1][ZONE_GROUPS]:
-                    zones_by_group = self.get_zones(instance_id, zone_group.get('ZoneGroupName', ''))
+                    zones_by_group = self.get_zones(instance_id, zone_group.get('zoneGroupName', ''))
                     ret_zone_groups.extend(zones_by_group)
 
         return ret_zone_groups
